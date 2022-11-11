@@ -44,7 +44,10 @@ tokens = [
     "TOKEN_VARIABLE_INSTANCIA",
     "TOKEN_VARIABLE_LOCAL",
     "TOKEN_CONSTANTE",
-    "TOKEN_VARIABLE_DE_CLASE"
+    "TOKEN_VARIABLE_DE_CLASE",
+
+    #Token de funcion
+    "TOKEN_NOMBRE_FUNCION"
 ] + list(palabrasReservadas.values()) + tipoDatos
 
 # --------------------Operadores aritmeticos --------------------
@@ -78,6 +81,16 @@ t_PUNTO = r'\.'
 t_IGUAL = r'='
 
 #--------------------Funciones de definir variable (Jose Alcivar)--------------------
+bandera = []
+def t_TOKEN_NOMBRE_FUNCION(t):
+    r'[a-z][a-zA-Z0-9_]*'
+    if (len(bandera) == 1):
+        t.type = "TOKEN_NOMBRE_FUNCION"
+        bandera.pop()
+    else:
+        t_TOKEN_VARIABLE_LOCAL(t)
+    return t
+
 def t_TOKEN_VARIABLE_GLOBAL(t):
     r'\$[a-z][a-zA-Z0-9_]*'
     t.type = palabrasReservadas.get(t.value, "TOKEN_VARIABLE_GLOBAL")
@@ -93,10 +106,11 @@ def t_TOKEN_VARIABLE_INSTANCIA(t):
     t.type = palabrasReservadas.get(t.value, "TOKEN_VARIABLE_INSTANCIA")
     return t
 
-esFuncion = False
 def t_TOKEN_VARIABLE_LOCAL(t):
     r'([a-z][a-zA-Z0-9_]*)|(_[a-z][a-zA-Z0-9_]+)'
     t.type = palabrasReservadas.get(t.value, "TOKEN_VARIABLE_LOCAL")
+    if(t.type == "DEF"):
+        bandera.append(1)
     return t
 
 def t_TOKEN_CONSTANTE(t):
