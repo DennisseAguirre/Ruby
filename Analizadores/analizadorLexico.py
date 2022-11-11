@@ -1,5 +1,6 @@
 from RecursosPly.lex import lex
 
+# Diccionario de palabras reservadas - Aguirre ___________________________________________________
 palabrasReservadas = {
 'and': 'AND', 'break':'BREAK', 'if':'IF', 'else':'ELSE', 'while':'WHILE',
     'for':'FOR', 'class':'CLASS', 'return':'RETURN', 'def':'DEF', 'end':'END',
@@ -7,12 +8,12 @@ palabrasReservadas = {
     'when':'WHEN', 'then':'THEN', 'rescue':'RESCUE', 'retry':'RETRY', 'self':'SELF',
     'until':'UNTIL', 'undef':'UNDEF', 'redo':'REDO', 'unless':'UNLESS', 'not':'NOT',
     'next':'NEXT', 'case':'CASE'
-
 }
 
-tipoDatos = {
+# Lista de los tipos de datos - Aguirre ____________________________________________________________
 
-}
+tipoDatos = ['STRING','ENTERO','FLOAT']
+
 
 tokens = [
     #tokens de simbolos
@@ -44,7 +45,7 @@ tokens = [
     "TOKEN_VARIABLE_LOCAL",
     "TOKEN_CONSTANTE",
     "TOKEN_VARIABLE_DE_CLASE"
-] + list(palabrasReservadas.values()) + list(tipoDatos.values())
+] + list(palabrasReservadas.values()) + tipoDatos
 
 # --------------------Operadores aritmeticos --------------------
 t_MAS = r'\+'
@@ -79,28 +80,53 @@ t_IGUAL = r'='
 #--------------------Funciones de definir variable--------------------
 def t_TOKEN_VARIABLE_GLOBAL(t):
     r'\$[a-z][a-zA-Z0-9]*'
-    t.type = palabrasReservadas.get(t.value, tipoDatos.get(t.value, "TOKEN_VARIABLE_GLOBAL"))
-    return t
+    #t.type = palabrasReservadas.get(t.value, tipoDatos.get(t.value, "TOKEN_VARIABLE_GLOBAL"))
+    #return t
 
 def t_TOKEN_VARIABLE_DE_CLASE(t):
     r'@@[a-z_][a-zA-Z0-9]*'
-    t.type = palabrasReservadas.get(t.value, tipoDatos.get(t.value, "TOKEN_VARIABLE_DE_CLASE"))
-    return t
+    #t.type = palabrasReservadas.get(t.value, tipoDatos.get(t.value, "TOKEN_VARIABLE_DE_CLASE"))
+    #return t
 
 def t_TOKEN_VARIABLE_INSTANCIA(t):
     r'@[a-z][a-zA-Z0-9]*'
-    t.type = palabrasReservadas.get(t.value, tipoDatos.get(t.value, "TOKEN_VARIABLE_INSTANCIA"))
-    return t
+    #t.type = palabrasReservadas.get(t.value, tipoDatos.get(t.value, "TOKEN_VARIABLE_INSTANCIA"))
+   # return t
 
 def t_TOKEN_VARIABLE_LOCAL(t):
     r'([a-z][a-zA-Z0-9]*)|(_[a-zA-Z0-9]+)'
-    t.type = palabrasReservadas.get(t.value, tipoDatos.get(t.value, "TOKEN_VARIABLE_LOCAL"))
-    return t
+    #t.type = palabrasReservadas.get(t.value, tipoDatos.get(t.value, "TOKEN_VARIABLE_LOCAL"))
+    #return t
 
 def t_TOKEN_CONSTANTE(t):
     r'[A-Z]+'
-    t.type = palabrasReservadas.get(t.value, tipoDatos.get(t.value, "TOKEN_CONSTANTE"))
-    return t
+    #t.type = palabrasReservadas.get(t.value, tipoDatos.get(t.value, "TOKEN_CONSTANTE"))
+   # return t
+
+
+
+# Reglas de expresión regular Aguirre __________________________________________________________
+
+def t_FLOAT(t):
+  r'\d+\.\d+'
+  t.value = float(t.value)
+  return t
+
+def t_ENTERO(t):
+   r'\d+'
+   t.value = int(t.value)
+   return t
+
+def t_STRING(t):
+   r'(^\"[a-zA-Z0-9\s]*\"$ | ^\'[a-zA-Z0-9\s]*\'$)'
+   t.value = str(t.value)
+   return t
+
+
+
+
+
+
 
 # Define a rule so we can track line numbers
 def t_newline(t):
