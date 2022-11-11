@@ -1,4 +1,5 @@
-from ply.lex import lex
+from Ply.lex import lex
+
 tokens = [
     "MAS",
     "MENOS",
