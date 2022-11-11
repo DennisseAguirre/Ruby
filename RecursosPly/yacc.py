@@ -1,5 +1,5 @@
 # -----------------------------------------------------------------------------
-# ply: yacc.py
+# RecursosPly: yacc.py
 #
 # Copyright (C) 2001-2022
 # David M. Beazley (Dabeaz LLC)

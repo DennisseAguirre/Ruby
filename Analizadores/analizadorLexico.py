@@ -77,33 +77,32 @@ t_PUNTO = r'\.'
 # --------------------Operadores de asignacion--------------------
 t_IGUAL = r'='
 
-#--------------------Funciones de definir variable--------------------
+#--------------------Funciones de definir variable (Jose Alcivar)--------------------
 def t_TOKEN_VARIABLE_GLOBAL(t):
-    r'\$[a-z][a-zA-Z0-9]*'
-    #t.type = palabrasReservadas.get(t.value, tipoDatos.get(t.value, "TOKEN_VARIABLE_GLOBAL"))
-    #return t
+    r'\$[a-z][a-zA-Z0-9_]*'
+    t.type = palabrasReservadas.get(t.value, "TOKEN_VARIABLE_GLOBAL")
+    return t
 
 def t_TOKEN_VARIABLE_DE_CLASE(t):
-    r'@@[a-z_][a-zA-Z0-9]*'
-    #t.type = palabrasReservadas.get(t.value, tipoDatos.get(t.value, "TOKEN_VARIABLE_DE_CLASE"))
-    #return t
+    r'@@[a-z_][a-zA-Z0-9_]*'
+    t.type = palabrasReservadas.get(t.value, "TOKEN_VARIABLE_DE_CLASE")
+    return t
 
 def t_TOKEN_VARIABLE_INSTANCIA(t):
-    r'@[a-z][a-zA-Z0-9]*'
-    #t.type = palabrasReservadas.get(t.value, tipoDatos.get(t.value, "TOKEN_VARIABLE_INSTANCIA"))
-   # return t
+    r'@[a-z][a-zA-Z0-9_]*'
+    t.type = palabrasReservadas.get(t.value, "TOKEN_VARIABLE_INSTANCIA")
+    return t
 
+esFuncion = False
 def t_TOKEN_VARIABLE_LOCAL(t):
-    r'([a-z][a-zA-Z0-9]*)|(_[a-zA-Z0-9]+)'
-    #t.type = palabrasReservadas.get(t.value, tipoDatos.get(t.value, "TOKEN_VARIABLE_LOCAL"))
-    #return t
+    r'([a-z][a-zA-Z0-9_]*)|(_[a-z][a-zA-Z0-9_]+)'
+    t.type = palabrasReservadas.get(t.value, "TOKEN_VARIABLE_LOCAL")
+    return t
 
 def t_TOKEN_CONSTANTE(t):
-    r'[A-Z]+'
-    #t.type = palabrasReservadas.get(t.value, tipoDatos.get(t.value, "TOKEN_CONSTANTE"))
-   # return t
-
-
+    r'[A-Z][A-Z_]+'
+    t.type = palabrasReservadas.get(t.value, "TOKEN_CONSTANTE")
+    return t
 
 # Reglas de expresión regular Aguirre __________________________________________________________
 
