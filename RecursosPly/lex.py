@@ -1,5 +1,5 @@
 # -----------------------------------------------------------------------------
-# Ply: lex.py
+# RecursosPly: lex.py
 #
 # Copyright (C) 2001-2022
 # David M. Beazley (Dabeaz LLC)

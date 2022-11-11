@@ -1,4 +1,4 @@
-from Ply.lex import lex
+from RecursosPly.lex import lex
 
 palabrasReservadas = {
 
@@ -32,7 +32,7 @@ tokens = [
     "COMA",
     "PUNTO",
 
-    #token de variable
+    #tokens de variables
     "TOKEN_VARIABLE_GLOBAL",
     "TOKEN_VARIABLE_INSTANCIA",
     "TOKEN_VARIABLE_LOCAL",
@@ -70,12 +70,7 @@ t_PUNTO = r'\.'
 # --------------------Operadores de asignacion--------------------
 t_IGUAL = r'='
 
-#--------------------Funcion de definir variable--------------------
-'''def t_TOKEN_VARIABLE(t):
-    r'(@|@@|\$|_|)[a-z][a-zA-Z0-9]*|[A-Z_]+'
-    t.type = palabrasReservadas.get(t.value, tipoDatos.get(t.value, "TOKEN_VARIABLE"))
-    return t'''
-
+#--------------------Funciones de definir variable--------------------
 def t_TOKEN_VARIABLE_GLOBAL(t):
     r'\$[a-z][a-zA-Z0-9]*'
     t.type = palabrasReservadas.get(t.value, tipoDatos.get(t.value, "TOKEN_VARIABLE_GLOBAL"))
