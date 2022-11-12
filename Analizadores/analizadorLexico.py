@@ -86,7 +86,7 @@ def t_BOOLEAN(t):
 
 
 def t_STRING(t):
-    r'("[a-zA-Z0-9\s]*"|\'[a-zA-Z0-9\s]*\')'
+    r'(\"[a-zA-Z0-9\s\,\-\_\.\?\!\:\@\;]*\"|\'[a-zA-Z0-9\s\,\-\_\.\?\!\:\@\;]*\')'
     t.value = str(t.value)
     return t
 
