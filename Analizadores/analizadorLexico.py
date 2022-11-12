@@ -1,18 +1,17 @@
 from RecursosPly.lex import lex
 
-# Diccionario de palabras reservadas - Aguirre ___________________________________________________
+# Diccionario de palabras reservadas - (Dennisse Aguirre) ___________________________________________________
 palabrasReservadas = {
 'and': 'AND', 'break':'BREAK', 'if':'IF', 'else':'ELSE', 'while':'WHILE',
     'for':'FOR', 'class':'CLASS', 'return':'RETURN', 'def':'DEF', 'end':'END',
-    'defined':'DEFINED', 'module': 'MODULE', 'in':'IN', 'or':'OR',
+    'defined':'DEFINED','true':'TRUE','false':'FALSE','module': 'MODULE', 'in':'IN', 'or':'OR',
     'when':'WHEN', 'then':'THEN', 'rescue':'RESCUE', 'retry':'RETRY', 'self':'SELF',
     'until':'UNTIL', 'undef':'UNDEF', 'redo':'REDO', 'unless':'UNLESS', 'not':'NOT',
-    'next':'NEXT', 'case':'CASE'
-}
+    'next':'NEXT', 'case':'CASE'}
 
-# Lista de los tipos de datos - Aguirre ____________________________________________________________
+# ------------------ Lista de ciertos tipos de datos - (Dennisse Aguirre) _________________________________
 
-tipoDatos = ['STRING','ENTERO','FLOAT']
+tipoDatos = ['STRING','ENTERO','FLOAT','BOOLEAN']
 
 
 tokens = [
@@ -80,8 +79,15 @@ t_PUNTO = r'\.'
 # --------------------Operadores de asignacion--------------------
 t_IGUAL = r'='
 
+
+#-------------- Regla que sigue el tipo BOOLEAN(Dennisse Aguirre)------------------
+def t_BOOLEAN(t):
+    r'(false|true)'
+    return t
+
 #--------------------Funciones de definir variable (Jose Alcivar)--------------------
 bandera = []
+
 def t_TOKEN_NOMBRE_FUNCION(t):
     r'[a-z][a-zA-Z0-9_]*'
     if (len(bandera) == 1):
@@ -118,7 +124,7 @@ def t_TOKEN_CONSTANTE(t):
     t.type = palabrasReservadas.get(t.value, "TOKEN_CONSTANTE")
     return t
 
-# Reglas de expresión regular Aguirre __________________________________________________________
+# -----------------------Reglas para los tipos de datos (Dennisse Aguirre) __________________________________
 
 def t_FLOAT(t):
   r'\d+\.\d+'
@@ -134,8 +140,6 @@ def t_STRING(t):
    r'(^\"[a-zA-Z0-9\s]*\"$ | ^\'[a-zA-Z0-9\s]*\'$)'
    t.value = str(t.value)
    return t
-
-
 
 
 
