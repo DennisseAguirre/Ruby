@@ -142,9 +142,6 @@ def t_STRING(t):
    return t
 
 
-
-
-
 # Define a rule so we can track line numbers
 def t_newline(t):
   r'\n+'
@@ -169,7 +166,11 @@ def getTokens(lexer):
   for tok in lexer:
     print(tok)
 
-
+file = open("prueba.txt")
+archivo=file.read()
+file.close()
+lexer.input(archivo)
+getTokens(lexer)
 linea = " "
 
 while linea != "":
