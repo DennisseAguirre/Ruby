@@ -1,0 +1,17 @@
+
+arreglo=[1,2,3]
+cadenas=["Hola","Bye","Un gusto"]
+valor1=253
+valor2= 100
+bandera=true
+suma= valor1+valor2
+resta= valor1 - valor2
+multipli=valor1*valor2
+div=valor1/valor2
+
+if(suma>200 && resta!=100 || multipli<=40.3 )
+    bandera=false
+
+else
+    bandera=true
+end

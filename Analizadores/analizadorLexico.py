@@ -102,10 +102,8 @@ def t_BOOLEAN(t):
     r'(false|true)'
     return t
 
-
 def t_STRING(t):
-    r'(\"[a-zA-Z0-9\s\,\-\_\.\?\!\:\@\;]*\"|\'[a-zA-Z0-9\s\,\-\_\.\?\!\:\@\;]*\')'
-    t.value = str(t.value)
+    r'\"[^".]*\"'
     return t
 
 
@@ -199,7 +197,7 @@ def getTokens(lexer):
         print(tok)
 
 
-file = open("prueba.txt")
+file = open("Aguirreprueba.txt")
 archivo = file.read()
 file.close()
 lexer.input(archivo)
