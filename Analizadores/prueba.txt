@@ -1,1 +1,25 @@
-if
+# -----Archivo de prueba -----
+
+# ----Operaciones aritmeticas--- (Allison Recalde)
+x + y
+x - y
+x * y
+x / y
+x ** y
+x % y
+x + y - x * y / 2 ** 2 % 2
+
+# ----Operaciones de comparación--- (Allison Recalde)
+x > y
+x < y
+x >= y
+x <= y
+x == y
+x <=> y
+
+#-----Arrays-------- (Allison Recalde)
+a = [ 1, 2, 3, 4 ]
+b = [ "Ecuador", "Qatar", "Paises Bajos", "Senegal" ]
+
+#----Hash----------(Allison Recalde)
+z = { "Ecuador" => 3, "Qatar" => 1 }

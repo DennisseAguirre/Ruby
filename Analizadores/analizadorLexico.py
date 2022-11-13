@@ -13,29 +13,44 @@ palabrasReservadas = {
 
 tipoDatos = ['STRING', 'ENTERO', 'FLOAT', 'BOOLEAN']
 
+#---Lista de tokens- (Allison Recalde)
 tokens = [
-             # tokens de simbolos
+             # tokens de operadores aritmeticos
              "MAS",
              "MENOS",
              "DIVISION",
              "MULTIPLICACION",
              "MODULO",
              "POTENCIA",
+
+            # tokens de simbolos de agrupacion
              "PAREN_DER",
              "PAREN_IZQ",
              "CORCHETE_DER",
              "CORCHETE_IZQ",
              "LLAVE_DER",
              "LLAVE_IZQ",
+
+            # tokens de operadores de comparación
              "IGUAL_COMPARACION",
              "DIFERENTE",
              "MAYOR_QUE",
              "MENOR_QUE",
              "MAYOR_IGUAL",
              "MENOR_IGUAL",
+
+            # tokens de operadores de asignacion
              "IGUAL",
+             "ASIGNACION_HASH",
+            
+            # tokens de simbolos
              "COMA",
              "PUNTO",
+
+            # tokens de operadores logicos
+            "AND_OP",
+            "OR_OP",
+            "NEGACION",
 
              # tokens de variables
              "TOKEN_VARIABLE_GLOBAL",
@@ -48,14 +63,14 @@ tokens = [
              "TOKEN_NOMBRE_FUNCION"
          ] + list(palabrasReservadas.values()) + tipoDatos
 
-# --------------------Operadores aritmeticos --------------------
+# --------------------Operadores aritmeticos (Allison Recalde) --------------------
 t_MAS = r'\+'
 t_MENOS = r'-'
 t_MULTIPLICACION = r'\*'
 t_DIVISION = r'/'
 t_MODULO = r'%'
 t_POTENCIA = r'\*\*'
-# --------------------Simbolos de agrupacion--------------------
+# --------------------Simbolos de agrupacion (Allison Recalde)--------------------
 t_PAREN_DER = r'\)'
 t_PAREN_IZQ = r'\('
 t_CORCHETE_DER = r'\]'
@@ -63,7 +78,7 @@ t_CORCHETE_IZQ = r'\['
 t_LLAVE_DER = r'\}'
 t_LLAVE_IZQ = r'\{'
 
-# --------------------Operadores de comparacion--------------------
+# --------------------Operadores de comparacion (Allison Recalde)--------------------
 t_IGUAL_COMPARACION = r'=='
 t_DIFERENTE = r'!='
 t_MAYOR_QUE = r'>'
@@ -71,14 +86,17 @@ t_MENOR_QUE = r'<'
 t_MAYOR_IGUAL = r'>='
 t_MENOR_IGUAL = r'<='
 
-# --------------------Simbolos--------------------
+# --------------------Simbolos (Allison Recalde)--------------------
 t_COMA = r','
 t_PUNTO = r'\.'
 
-# --------------------Operadores de asignacion--------------------
+# --------------------Operadores de asignacion (Allison Recalde)--------------------
 t_IGUAL = r'='
-
-
+t_ASIGNACION_HASH = r'=>'
+# --------------------Operadores logicos (Allison Recalde)
+t_AND_OP = r'\&\&'
+t_OR_OP = r'\|\|'
+t_NEGACION = r'!'
 # -------------- Regla que sigue el tipo BOOLEAN y STRING (Dennisse Aguirre)------------------
 def t_BOOLEAN(t):
     r'(false|true)'
