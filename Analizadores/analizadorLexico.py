@@ -60,7 +60,9 @@ tokens = [
              "TOKEN_VARIABLE_DE_CLASE",
 
              # Token de funcion
-             "TOKEN_NOMBRE_FUNCION"
+             "TOKEN_NOMBRE_FUNCION",
+
+            "NOMBRE_CLASE"
          ] + list(palabrasReservadas.values()) + tipoDatos
 
 # --------------------Operadores aritmeticos (Allison Recalde) --------------------
@@ -120,6 +122,14 @@ def t_TOKEN_NOMBRE_FUNCION(t):
         t_TOKEN_VARIABLE_LOCAL(t)
     return t
 
+def t_NOMBRE_CLASE(t):
+    r'[A-Z][a-zA-Z0-9_]*'
+    if (len(bandera) == 1):
+        t.type = "NOMBRE_CLASE"
+        bandera.pop()
+    else:
+        t_TOKEN_VARIABLE_LOCAL(t)
+    return t
 
 def t_TOKEN_VARIABLE_GLOBAL(t):
     r'\$[a-z][a-zA-Z0-9_]*'
@@ -144,6 +154,8 @@ def t_TOKEN_VARIABLE_LOCAL(t):
     t.type = palabrasReservadas.get(t.value, "TOKEN_VARIABLE_LOCAL")
     if (t.type == "DEF"):
         bandera.append(1)
+    if (t.type == "CLASS"):
+        bandera.append(1)
     return t
 
 
@@ -151,6 +163,7 @@ def t_TOKEN_CONSTANTE(t):
     r'[A-Z][A-Z_]+'
     t.type = palabrasReservadas.get(t.value, "TOKEN_CONSTANTE")
     return t
+
 
 
 # -----------------------Reglas para los tipos de datos (Dennisse Aguirre) __________________________________

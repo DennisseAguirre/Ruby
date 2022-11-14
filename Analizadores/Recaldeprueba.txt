@@ -1,6 +1,28 @@
-# -----Archivo de prueba -----
+# -----Archivo de prueba (Allison Recalde)-----
 
-# ----Operaciones aritmeticas--- (Allison Recalde)
+#ALGORITMO DE PRUEBA, VERIFICA SI DOS NÚMEROS SON MÚLTIPLOS ENTRE SI
+class Multiplos
+  def solucion(x,y)
+    if(x>y)
+      if(x%y)==0
+        print "Los números son múltiplos entre si"
+      else
+        print "No son múltiplos entre si"
+      end
+    else if(x<y)
+      if(y%x)==0
+        print "Los números son múltiplos entre si"
+      else
+        print "No son múltiplos entre si"
+      end
+    else
+       print "Los números son múltiplos entre si"
+    end
+    end
+  end
+end
+#PRUEBAS INICIALES
+# ----Operaciones aritmeticas---
 x + y
 x - y
 x * y
@@ -9,7 +31,7 @@ x ** y
 x % y
 x + y - x * y / 2 ** 2 % 2
 
-# ----Operaciones de comparación--- (Allison Recalde)
+# ----Operaciones de comparación---
 x > y
 x < y
 x >= y
@@ -17,9 +39,9 @@ x <= y
 x == y
 x <=> y
 
-#-----Arrays-------- (Allison Recalde)
+#-----Arrays--------
 a = [ 1, 2, 3, 4 ]
 b = [ "Ecuador", "Qatar", "Paises Bajos", "Senegal" ]
 
-#----Hash----------(Allison Recalde)
+#----Hash----------
 z = { "Ecuador" => 3, "Qatar" => 1 }
