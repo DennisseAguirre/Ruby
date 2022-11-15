@@ -44,23 +44,23 @@ tokens = [
              "ASIGNACION_HASH",
             
             # tokens de simbolos
-             "COMA",
-             "PUNTO",
+            "COMA",
+            "PUNTO",
 
             # tokens de operadores logicos
             "AND_OP",
             "OR_OP",
             "NEGACION",
 
-             # tokens de variables
-             "TOKEN_VARIABLE_GLOBAL",
-             "TOKEN_VARIABLE_INSTANCIA",
-             "TOKEN_VARIABLE_LOCAL",
-             "TOKEN_CONSTANTE",
-             "TOKEN_VARIABLE_DE_CLASE",
+             # tokens de variables (Jose Alcivar)
+            "TOKEN_VARIABLE_GLOBAL",
+            "TOKEN_VARIABLE_INSTANCIA",
+            "TOKEN_VARIABLE_LOCAL",
+            "TOKEN_CONSTANTE",
+            "TOKEN_VARIABLE_DE_CLASE",
 
-             # Token de funcion
-             "TOKEN_NOMBRE_FUNCION",
+             # Token de funcion (Jose Alcivar)
+            "TOKEN_NOMBRE_FUNCION",
 
             "NOMBRE_CLASE"
          ] + list(palabrasReservadas.values()) + tipoDatos
