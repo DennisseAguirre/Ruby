@@ -1,0 +1,10 @@
+$paises = ["Ecuador", "Chile", "Peru", "Colombia", "Brasil"]
+VALOR = 45
+@paisSeleccionado = $paises[0]
+@@paisDestino = $paises[3]
+
+if(paisDestino == paisSeleccionado)
+    paisImprimir = paisDestino
+    print "Ruta correcta, el costo es de #{VALOR}"
+else
+    print "Los paises no coinciden"

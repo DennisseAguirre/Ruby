@@ -112,7 +112,6 @@ def t_STRING(t):
 # --------------------Funciones de definir variable (Jose Alcivar)--------------------
 bandera = []
 
-
 def t_TOKEN_NOMBRE_FUNCION(t):
     r'[a-z][a-zA-Z0-9_]*'
     if (len(bandera) == 1):
@@ -122,13 +121,14 @@ def t_TOKEN_NOMBRE_FUNCION(t):
         t_TOKEN_VARIABLE_LOCAL(t)
     return t
 
+def t_TOKEN_CONSTANTE(t):
+    r'[A-Z][A-Z_]+'
+    t.type = palabrasReservadas.get(t.value, "TOKEN_CONSTANTE")
+    return t
+
 def t_NOMBRE_CLASE(t):
     r'[A-Z][a-zA-Z0-9_]*'
-    if (len(bandera) == 1):
-        t.type = "NOMBRE_CLASE"
-        bandera.pop()
-    else:
-        t_TOKEN_VARIABLE_LOCAL(t)
+    t.type = "NOMBRE_CLASE"
     return t
 
 def t_TOKEN_VARIABLE_GLOBAL(t):
@@ -154,16 +154,7 @@ def t_TOKEN_VARIABLE_LOCAL(t):
     t.type = palabrasReservadas.get(t.value, "TOKEN_VARIABLE_LOCAL")
     if (t.type == "DEF"):
         bandera.append(1)
-    if (t.type == "CLASS"):
-        bandera.append(1)
     return t
-
-
-def t_TOKEN_CONSTANTE(t):
-    r'[A-Z][A-Z_]+'
-    t.type = palabrasReservadas.get(t.value, "TOKEN_CONSTANTE")
-    return t
-
 
 
 # -----------------------Reglas para los tipos de datos (Dennisse Aguirre) __________________________________
@@ -209,8 +200,9 @@ def getTokens(lexer):
     for tok in lexer:
         print(tok)
 
+ruta = "../ArchivosPrueba/"
 
-file = open("Aguirreprueba.txt")
+file = open(ruta + "AlcivarPrueba.txt") #reemplazar el nombre del archivo
 archivo = file.read()
 file.close()
 lexer.input(archivo)
