@@ -201,8 +201,9 @@ def getTokens(lexer):
         print(tok)
 
 ruta = "../ArchivosPrueba/"
+archivos = ["Aguirreprueba.txt", "Recaldeprueba.txt","AlcivarPrueba.txt"]
 
-file = open(ruta + "AlcivarPrueba.txt") #reemplazar el nombre del archivo
+file = open(ruta + archivos[2]) #reemplazar el indice del archivo
 archivo = file.read()
 file.close()
 lexer.input(archivo)
