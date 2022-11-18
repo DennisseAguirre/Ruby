@@ -13,10 +13,12 @@ def p_cuerpo(p):
 
 def p_cuerpoF(p):
     '''cuerpoF : asignacion
-    | impresion'''
+    | impresion
+    | operacionesmate
+    '''
 
 
-# 1. Asignacion
+# ___________________________Asignación de variables- (Alcivar) _______________________
 
 def p_asignacion(p):
     "asignacion : variable IGUAL valor"
@@ -36,6 +38,25 @@ def p_valor(p):
     | FLOAT
     | BOOLEAN
     | variable'''
+
+#___________________________ Operaciones matemáticas (Aguirre)________________
+def p_valormate(p):
+    '''valormate : ENTERO
+        | FLOAT
+        | variable
+    '''
+
+def p_signosmate(p):
+    '''signosmate : MAS
+    | MENOS
+    | MULTIPLICACION
+    | DIVISION
+    | MODULO
+    | POTENCIA
+    '''
+
+def p_operacionesmate(p):
+    "operacionesmate : valormate signosmate valormate"
 
 
 # 2. Definicion de funcion
