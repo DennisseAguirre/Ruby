@@ -1,0 +1,488 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    AND
+    AND_OP
+    ASIGNACION_HASH
+    BREAK
+    CASE
+    CLASS
+    CORCHETE_DER
+    CORCHETE_IZQ
+    DEFINED
+    DIFERENTE
+    DIVISION
+    ELSE
+    END
+    FOR
+    IF
+    IGUAL_COMPARACION
+    IN
+    LLAVE_DER
+    LLAVE_IZQ
+    MAS
+    MAYOR_IGUAL
+    MAYOR_QUE
+    MENOR_IGUAL
+    MENOR_QUE
+    MENOS
+    MODULE
+    MODULO
+    MULTIPLICACION
+    NEGACION
+    NEXT
+    NOMBRE_CLASE
+    NOT
+    OR
+    OR_OP
+    POTENCIA
+    PUNTO
+    REDO
+    RESCUE
+    RETRY
+    RETURN
+    SELF
+    THEN
+    UNDEF
+    UNLESS
+    UNTIL
+    WHEN
+    WHILE
+
+Grammar
+
+Rule 0     S' -> cuerpo
+Rule 1     cuerpo -> cuerpoF
+Rule 2     cuerpo -> funcion
+Rule 3     cuerpoF -> asignacion
+Rule 4     cuerpoF -> impresion
+Rule 5     asignacion -> variable IGUAL valor
+Rule 6     variable -> TOKEN_VARIABLE_GLOBAL
+Rule 7     variable -> TOKEN_VARIABLE_INSTANCIA
+Rule 8     variable -> TOKEN_VARIABLE_LOCAL
+Rule 9     variable -> TOKEN_CONSTANTE
+Rule 10    variable -> TOKEN_VARIABLE_DE_CLASE
+Rule 11    valor -> ENTERO
+Rule 12    valor -> STRING
+Rule 13    valor -> FLOAT
+Rule 14    valor -> BOOLEAN
+Rule 15    valor -> variable
+Rule 16    funcion -> DEF TOKEN_NOMBRE_FUNCION PAREN_IZQ parametro PAREN_DER cuerpoF
+Rule 17    parametro -> variable
+Rule 18    parametro -> variable COMA parametro
+Rule 19    impresion -> PRINT valor
+
+Terminals, with rules where they appear
+
+AND                  : 
+AND_OP               : 
+ASIGNACION_HASH      : 
+BOOLEAN              : 14
+BREAK                : 
+CASE                 : 
+CLASS                : 
+COMA                 : 18
+CORCHETE_DER         : 
+CORCHETE_IZQ         : 
+DEF                  : 16
+DEFINED              : 
+DIFERENTE            : 
+DIVISION             : 
+ELSE                 : 
+END                  : 
+ENTERO               : 11
+FLOAT                : 13
+FOR                  : 
+IF                   : 
+IGUAL                : 5
+IGUAL_COMPARACION    : 
+IN                   : 
+LLAVE_DER            : 
+LLAVE_IZQ            : 
+MAS                  : 
+MAYOR_IGUAL          : 
+MAYOR_QUE            : 
+MENOR_IGUAL          : 
+MENOR_QUE            : 
+MENOS                : 
+MODULE               : 
+MODULO               : 
+MULTIPLICACION       : 
+NEGACION             : 
+NEXT                 : 
+NOMBRE_CLASE         : 
+NOT                  : 
+OR                   : 
+OR_OP                : 
+PAREN_DER            : 16
+PAREN_IZQ            : 16
+POTENCIA             : 
+PRINT                : 19
+PUNTO                : 
+REDO                 : 
+RESCUE               : 
+RETRY                : 
+RETURN               : 
+SELF                 : 
+STRING               : 12
+THEN                 : 
+TOKEN_CONSTANTE      : 9
+TOKEN_NOMBRE_FUNCION : 16
+TOKEN_VARIABLE_DE_CLASE : 10
+TOKEN_VARIABLE_GLOBAL : 6
+TOKEN_VARIABLE_INSTANCIA : 7
+TOKEN_VARIABLE_LOCAL : 8
+UNDEF                : 
+UNLESS               : 
+UNTIL                : 
+WHEN                 : 
+WHILE                : 
+error                : 
+
+Nonterminals, with rules where they appear
+
+asignacion           : 3
+cuerpo               : 0
+cuerpoF              : 1 16
+funcion              : 2
+impresion            : 4
+parametro            : 16 18
+valor                : 5 19
+variable             : 5 15 17 18
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . cuerpo
+    (1) cuerpo -> . cuerpoF
+    (2) cuerpo -> . funcion
+    (3) cuerpoF -> . asignacion
+    (4) cuerpoF -> . impresion
+    (16) funcion -> . DEF TOKEN_NOMBRE_FUNCION PAREN_IZQ parametro PAREN_DER cuerpoF
+    (5) asignacion -> . variable IGUAL valor
+    (19) impresion -> . PRINT valor
+    (6) variable -> . TOKEN_VARIABLE_GLOBAL
+    (7) variable -> . TOKEN_VARIABLE_INSTANCIA
+    (8) variable -> . TOKEN_VARIABLE_LOCAL
+    (9) variable -> . TOKEN_CONSTANTE
+    (10) variable -> . TOKEN_VARIABLE_DE_CLASE
+
+    DEF             shift and go to state 6
+    PRINT           shift and go to state 8
+    TOKEN_VARIABLE_GLOBAL shift and go to state 9
+    TOKEN_VARIABLE_INSTANCIA shift and go to state 10
+    TOKEN_VARIABLE_LOCAL shift and go to state 11
+    TOKEN_CONSTANTE shift and go to state 12
+    TOKEN_VARIABLE_DE_CLASE shift and go to state 13
+
+    cuerpo                         shift and go to state 1
+    cuerpoF                        shift and go to state 2
+    funcion                        shift and go to state 3
+    asignacion                     shift and go to state 4
+    impresion                      shift and go to state 5
+    variable                       shift and go to state 7
+
+state 1
+
+    (0) S' -> cuerpo .
+
+
+
+state 2
+
+    (1) cuerpo -> cuerpoF .
+
+    $end            reduce using rule 1 (cuerpo -> cuerpoF .)
+
+
+state 3
+
+    (2) cuerpo -> funcion .
+
+    $end            reduce using rule 2 (cuerpo -> funcion .)
+
+
+state 4
+
+    (3) cuerpoF -> asignacion .
+
+    $end            reduce using rule 3 (cuerpoF -> asignacion .)
+
+
+state 5
+
+    (4) cuerpoF -> impresion .
+
+    $end            reduce using rule 4 (cuerpoF -> impresion .)
+
+
+state 6
+
+    (16) funcion -> DEF . TOKEN_NOMBRE_FUNCION PAREN_IZQ parametro PAREN_DER cuerpoF
+
+    TOKEN_NOMBRE_FUNCION shift and go to state 14
+
+
+state 7
+
+    (5) asignacion -> variable . IGUAL valor
+
+    IGUAL           shift and go to state 15
+
+
+state 8
+
+    (19) impresion -> PRINT . valor
+    (11) valor -> . ENTERO
+    (12) valor -> . STRING
+    (13) valor -> . FLOAT
+    (14) valor -> . BOOLEAN
+    (15) valor -> . variable
+    (6) variable -> . TOKEN_VARIABLE_GLOBAL
+    (7) variable -> . TOKEN_VARIABLE_INSTANCIA
+    (8) variable -> . TOKEN_VARIABLE_LOCAL
+    (9) variable -> . TOKEN_CONSTANTE
+    (10) variable -> . TOKEN_VARIABLE_DE_CLASE
+
+    ENTERO          shift and go to state 17
+    STRING          shift and go to state 18
+    FLOAT           shift and go to state 19
+    BOOLEAN         shift and go to state 20
+    TOKEN_VARIABLE_GLOBAL shift and go to state 9
+    TOKEN_VARIABLE_INSTANCIA shift and go to state 10
+    TOKEN_VARIABLE_LOCAL shift and go to state 11
+    TOKEN_CONSTANTE shift and go to state 12
+    TOKEN_VARIABLE_DE_CLASE shift and go to state 13
+
+    valor                          shift and go to state 16
+    variable                       shift and go to state 21
+
+state 9
+
+    (6) variable -> TOKEN_VARIABLE_GLOBAL .
+
+    IGUAL           reduce using rule 6 (variable -> TOKEN_VARIABLE_GLOBAL .)
+    $end            reduce using rule 6 (variable -> TOKEN_VARIABLE_GLOBAL .)
+    COMA            reduce using rule 6 (variable -> TOKEN_VARIABLE_GLOBAL .)
+    PAREN_DER       reduce using rule 6 (variable -> TOKEN_VARIABLE_GLOBAL .)
+
+
+state 10
+
+    (7) variable -> TOKEN_VARIABLE_INSTANCIA .
+
+    IGUAL           reduce using rule 7 (variable -> TOKEN_VARIABLE_INSTANCIA .)
+    $end            reduce using rule 7 (variable -> TOKEN_VARIABLE_INSTANCIA .)
+    COMA            reduce using rule 7 (variable -> TOKEN_VARIABLE_INSTANCIA .)
+    PAREN_DER       reduce using rule 7 (variable -> TOKEN_VARIABLE_INSTANCIA .)
+
+
+state 11
+
+    (8) variable -> TOKEN_VARIABLE_LOCAL .
+
+    IGUAL           reduce using rule 8 (variable -> TOKEN_VARIABLE_LOCAL .)
+    $end            reduce using rule 8 (variable -> TOKEN_VARIABLE_LOCAL .)
+    COMA            reduce using rule 8 (variable -> TOKEN_VARIABLE_LOCAL .)
+    PAREN_DER       reduce using rule 8 (variable -> TOKEN_VARIABLE_LOCAL .)
+
+
+state 12
+
+    (9) variable -> TOKEN_CONSTANTE .
+
+    IGUAL           reduce using rule 9 (variable -> TOKEN_CONSTANTE .)
+    $end            reduce using rule 9 (variable -> TOKEN_CONSTANTE .)
+    COMA            reduce using rule 9 (variable -> TOKEN_CONSTANTE .)
+    PAREN_DER       reduce using rule 9 (variable -> TOKEN_CONSTANTE .)
+
+
+state 13
+
+    (10) variable -> TOKEN_VARIABLE_DE_CLASE .
+
+    IGUAL           reduce using rule 10 (variable -> TOKEN_VARIABLE_DE_CLASE .)
+    $end            reduce using rule 10 (variable -> TOKEN_VARIABLE_DE_CLASE .)
+    COMA            reduce using rule 10 (variable -> TOKEN_VARIABLE_DE_CLASE .)
+    PAREN_DER       reduce using rule 10 (variable -> TOKEN_VARIABLE_DE_CLASE .)
+
+
+state 14
+
+    (16) funcion -> DEF TOKEN_NOMBRE_FUNCION . PAREN_IZQ parametro PAREN_DER cuerpoF
+
+    PAREN_IZQ       shift and go to state 22
+
+
+state 15
+
+    (5) asignacion -> variable IGUAL . valor
+    (11) valor -> . ENTERO
+    (12) valor -> . STRING
+    (13) valor -> . FLOAT
+    (14) valor -> . BOOLEAN
+    (15) valor -> . variable
+    (6) variable -> . TOKEN_VARIABLE_GLOBAL
+    (7) variable -> . TOKEN_VARIABLE_INSTANCIA
+    (8) variable -> . TOKEN_VARIABLE_LOCAL
+    (9) variable -> . TOKEN_CONSTANTE
+    (10) variable -> . TOKEN_VARIABLE_DE_CLASE
+
+    ENTERO          shift and go to state 17
+    STRING          shift and go to state 18
+    FLOAT           shift and go to state 19
+    BOOLEAN         shift and go to state 20
+    TOKEN_VARIABLE_GLOBAL shift and go to state 9
+    TOKEN_VARIABLE_INSTANCIA shift and go to state 10
+    TOKEN_VARIABLE_LOCAL shift and go to state 11
+    TOKEN_CONSTANTE shift and go to state 12
+    TOKEN_VARIABLE_DE_CLASE shift and go to state 13
+
+    variable                       shift and go to state 21
+    valor                          shift and go to state 23
+
+state 16
+
+    (19) impresion -> PRINT valor .
+
+    $end            reduce using rule 19 (impresion -> PRINT valor .)
+
+
+state 17
+
+    (11) valor -> ENTERO .
+
+    $end            reduce using rule 11 (valor -> ENTERO .)
+
+
+state 18
+
+    (12) valor -> STRING .
+
+    $end            reduce using rule 12 (valor -> STRING .)
+
+
+state 19
+
+    (13) valor -> FLOAT .
+
+    $end            reduce using rule 13 (valor -> FLOAT .)
+
+
+state 20
+
+    (14) valor -> BOOLEAN .
+
+    $end            reduce using rule 14 (valor -> BOOLEAN .)
+
+
+state 21
+
+    (15) valor -> variable .
+
+    $end            reduce using rule 15 (valor -> variable .)
+
+
+state 22
+
+    (16) funcion -> DEF TOKEN_NOMBRE_FUNCION PAREN_IZQ . parametro PAREN_DER cuerpoF
+    (17) parametro -> . variable
+    (18) parametro -> . variable COMA parametro
+    (6) variable -> . TOKEN_VARIABLE_GLOBAL
+    (7) variable -> . TOKEN_VARIABLE_INSTANCIA
+    (8) variable -> . TOKEN_VARIABLE_LOCAL
+    (9) variable -> . TOKEN_CONSTANTE
+    (10) variable -> . TOKEN_VARIABLE_DE_CLASE
+
+    TOKEN_VARIABLE_GLOBAL shift and go to state 9
+    TOKEN_VARIABLE_INSTANCIA shift and go to state 10
+    TOKEN_VARIABLE_LOCAL shift and go to state 11
+    TOKEN_CONSTANTE shift and go to state 12
+    TOKEN_VARIABLE_DE_CLASE shift and go to state 13
+
+    parametro                      shift and go to state 24
+    variable                       shift and go to state 25
+
+state 23
+
+    (5) asignacion -> variable IGUAL valor .
+
+    $end            reduce using rule 5 (asignacion -> variable IGUAL valor .)
+
+
+state 24
+
+    (16) funcion -> DEF TOKEN_NOMBRE_FUNCION PAREN_IZQ parametro . PAREN_DER cuerpoF
+
+    PAREN_DER       shift and go to state 26
+
+
+state 25
+
+    (17) parametro -> variable .
+    (18) parametro -> variable . COMA parametro
+
+    PAREN_DER       reduce using rule 17 (parametro -> variable .)
+    COMA            shift and go to state 27
+
+
+state 26
+
+    (16) funcion -> DEF TOKEN_NOMBRE_FUNCION PAREN_IZQ parametro PAREN_DER . cuerpoF
+    (3) cuerpoF -> . asignacion
+    (4) cuerpoF -> . impresion
+    (5) asignacion -> . variable IGUAL valor
+    (19) impresion -> . PRINT valor
+    (6) variable -> . TOKEN_VARIABLE_GLOBAL
+    (7) variable -> . TOKEN_VARIABLE_INSTANCIA
+    (8) variable -> . TOKEN_VARIABLE_LOCAL
+    (9) variable -> . TOKEN_CONSTANTE
+    (10) variable -> . TOKEN_VARIABLE_DE_CLASE
+
+    PRINT           shift and go to state 8
+    TOKEN_VARIABLE_GLOBAL shift and go to state 9
+    TOKEN_VARIABLE_INSTANCIA shift and go to state 10
+    TOKEN_VARIABLE_LOCAL shift and go to state 11
+    TOKEN_CONSTANTE shift and go to state 12
+    TOKEN_VARIABLE_DE_CLASE shift and go to state 13
+
+    cuerpoF                        shift and go to state 28
+    asignacion                     shift and go to state 4
+    impresion                      shift and go to state 5
+    variable                       shift and go to state 7
+
+state 27
+
+    (18) parametro -> variable COMA . parametro
+    (17) parametro -> . variable
+    (18) parametro -> . variable COMA parametro
+    (6) variable -> . TOKEN_VARIABLE_GLOBAL
+    (7) variable -> . TOKEN_VARIABLE_INSTANCIA
+    (8) variable -> . TOKEN_VARIABLE_LOCAL
+    (9) variable -> . TOKEN_CONSTANTE
+    (10) variable -> . TOKEN_VARIABLE_DE_CLASE
+
+    TOKEN_VARIABLE_GLOBAL shift and go to state 9
+    TOKEN_VARIABLE_INSTANCIA shift and go to state 10
+    TOKEN_VARIABLE_LOCAL shift and go to state 11
+    TOKEN_CONSTANTE shift and go to state 12
+    TOKEN_VARIABLE_DE_CLASE shift and go to state 13
+
+    variable                       shift and go to state 25
+    parametro                      shift and go to state 29
+
+state 28
+
+    (16) funcion -> DEF TOKEN_NOMBRE_FUNCION PAREN_IZQ parametro PAREN_DER cuerpoF .
+
+    $end            reduce using rule 16 (funcion -> DEF TOKEN_NOMBRE_FUNCION PAREN_IZQ parametro PAREN_DER cuerpoF .)
+
+
+state 29
+
+    (18) parametro -> variable COMA parametro .
+
+    PAREN_DER       reduce using rule 18 (parametro -> variable COMA parametro .)
+

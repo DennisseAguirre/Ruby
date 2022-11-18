@@ -7,7 +7,7 @@ palabrasReservadas = {
     'defined': 'DEFINED', 'module': 'MODULE', 'in': 'IN', 'or': 'OR',
     'when': 'WHEN', 'then': 'THEN', 'rescue': 'RESCUE', 'retry': 'RETRY', 'self': 'SELF',
     'until': 'UNTIL', 'undef': 'UNDEF', 'redo': 'REDO', 'unless': 'UNLESS', 'not': 'NOT',
-    'next': 'NEXT', 'case': 'CASE'}
+    'next': 'NEXT', 'case': 'CASE','print':'PRINT'}
 
 # ------------------ Lista de ciertos tipos de datos - (Dennisse Aguirre) _________________________________
 
@@ -195,7 +195,7 @@ def t_error(t):
 # Build the lexer
 lexer = lex()
 
-
+'''
 def getTokens(lexer):
     for tok in lexer:
         print(tok)
@@ -216,3 +216,4 @@ while linea != "":
     getTokens(lexer)
 # Tokenize
 print("Succesfull")
+'''
