@@ -1,7 +1,5 @@
-import ply.yacc as yacc
-#from analizadorLexico import tokens
-from Analizadores  import analizadorLexico
-tokens = analizadorLexico.tokens
+from RecursosPly import yacc
+from analizadorLexico import tokens
 
 
 # Crear las siguientes reglas
