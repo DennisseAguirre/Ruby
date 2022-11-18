@@ -8,7 +8,7 @@ from analizadorLexico import tokens
 
 def p_cuerpo(p):
     '''cuerpo : cuerpoF
-    | funcion'''
+    | funcionparametro'''
 
 
 def p_cuerpoF(p):
@@ -39,7 +39,7 @@ def p_valor(p):
     | BOOLEAN
     | variable'''
 
-#___________________________ Operaciones matemáticas (Aguirre)________________
+#___________________________ Operaciones matemáticas (Aguirre)_______________________________
 def p_valormate(p):
     '''valormate : ENTERO
         | FLOAT
@@ -59,10 +59,11 @@ def p_operacionesmate(p):
     "operacionesmate : valormate signosmate valormate"
 
 
-# 2. Definicion de funcion
-def p_funcion(p):
-    'funcion : DEF TOKEN_NOMBRE_FUNCION PAREN_IZQ parametro PAREN_DER cuerpoF'
+# Definicion de funcion
+#___________________________ Funciones que reciben 0 o n parámetros (Aguirre)_____________________
 
+def p_funcionparametro(p):
+    "funcionparametro : DEF TOKEN_NOMBRE_FUNCION PAREN_IZQ parametro PAREN_DER cuerpoF END"
 
 def p_parametro(p):
     '''parametro : variable
