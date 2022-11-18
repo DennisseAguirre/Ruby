@@ -68,7 +68,7 @@ def p_funcionparametro(p):
     "funcionparametro : DEF TOKEN_NOMBRE_FUNCION PAREN_IZQ parametro PAREN_DER cuerpoF END"
 
 def p_funcionsinparametro(p):
-    "funcionsinparametro : DEF TOKEN_NOMBRE_FUNCION PAREN_IZQ  PAREN_DER cuerpoF END"
+    "funcionsinparametro : DEF TOKEN_NOMBRE_FUNCION cuerpoF END"
 
 def p_parametro(p):
     '''parametro : variable
