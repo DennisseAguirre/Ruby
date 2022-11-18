@@ -8,7 +8,9 @@ from analizadorLexico import tokens
 
 def p_cuerpo(p):
     '''cuerpo : cuerpoF
-    | funcionparametro'''
+    | funcionparametro
+    | funcionsinparametro
+    '''
 
 
 def p_cuerpoF(p):
@@ -64,6 +66,9 @@ def p_operacionesmate(p):
 
 def p_funcionparametro(p):
     "funcionparametro : DEF TOKEN_NOMBRE_FUNCION PAREN_IZQ parametro PAREN_DER cuerpoF END"
+
+def p_funcionsinparametro(p):
+    "funcionsinparametro : DEF TOKEN_NOMBRE_FUNCION PAREN_IZQ  PAREN_DER cuerpoF END"
 
 def p_parametro(p):
     '''parametro : variable
