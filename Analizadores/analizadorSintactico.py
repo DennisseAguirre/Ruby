@@ -8,22 +8,39 @@ from analizadorLexico import tokens
 
 def p_cuerpo(p):
     '''cuerpo : cuerpoF
-    | funcionparametro
-    | funcionsinparametro
+    | tiposfuncion
+    | estructuracontrol
     '''
 
 
 def p_cuerpoF(p):
     '''cuerpoF : asignacion
-    | impresion
     | operacionesmate
     '''
 
+def p_tiposfuncion(p):
+    '''tiposfuncion : funcionparametro
+    | funcionsinparametro
+
+    '''
+
+
+def p_estructuradatos(p):
+    '''estructuracontrol : array
+     '''
+    #
+
+def p_tipodato(p):
+    '''tipodato : ENTERO
+    | STRING
+    | FLOAT
+    | BOOLEAN
+    '''
 
 # ___________________________Asignación de variables- (Alcivar) _______________________
 
 def p_asignacion(p):
-    "asignacion : variable IGUAL valor"
+    "asignacion : variable IGUAL tipodato"
 
 
 def p_variable(p):
@@ -34,18 +51,12 @@ def p_variable(p):
     | TOKEN_VARIABLE_DE_CLASE'''
 
 
-def p_valor(p):
-    '''valor : ENTERO
-    | STRING
-    | FLOAT
-    | BOOLEAN
-    | variable'''
+
 
 #___________________________ Operaciones matemáticas (Aguirre)_______________________________
 def p_valormate(p):
     '''valormate : ENTERO
         | FLOAT
-        | variable
     '''
 
 def p_signosmate(p):
@@ -75,16 +86,22 @@ def p_parametro(p):
     | variable COMA parametro
     '''
 
+#__________________________ Estructura de datos : Array (Aguirre)  ______________________________________________
 
-# 3. Impresion
-def p_impresion(p):
-    'impresion : PRINT valor'
+def p_array(p):
+    "array : CORCHETE_IZQ elemento CORCHETE_DER"
+
+def p_elemento(p):
+    '''elemento : tipodato
+        | tipodato COMA elemento
+    '''
 
 
-# 4. Entrada de datos
 
 
-# 5. Tipos de datos
+
+
+
 
 
 def p_error(p):
