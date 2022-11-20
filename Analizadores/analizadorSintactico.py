@@ -155,6 +155,9 @@ def p_funcion_intersect(p):
     conjunto : conjunto PUNTO INTERSECT SIGNO_INTERROGACION  conjunto
     '''
 
+#------------------------------ESTRUCTURA DE CONTROL------------------------------
+#------estrcutura case------
+def p_estructura_case(p):
 
 
 
