@@ -73,7 +73,13 @@ def p_operacionesmate(p):
     "operacionesmate : valormate signosmate valormate"
 #__________________________ Comparaciones (Allison Recalde)_______
 def p_comparaciones(p):
-    "comparaciones : valormate operadores_comparacion valormate"
+    "comparaciones : valormate mas_comparaciones"
+
+
+def p_mas_comparaciones(p):
+    '''mas_comparaciones : operadores_comparacion valormate
+                                   | operadores_comparacion valormate mas_comparaciones
+    '''
 def p_operadores_comparacion(p):
     ''' operadores_comparacion : IGUAL_COMPARACION
     | DIFERENTE
@@ -81,6 +87,8 @@ def p_operadores_comparacion(p):
     | MENOR_QUE
     | MAYOR_IGUAL
     | MENOR_IGUAL'''
+
+
 # Definicion de funcion
 #___________________________ Funciones que reciben 0 o n parámetros (Aguirre)_____________________
 
@@ -93,6 +101,22 @@ def p_funcionsinparametro(p):
 def p_parametro(p):
     '''parametro : variable
     | variable COMA parametro
+    '''
+#_________________________ Estructura de control______________
+#BUCLE WHILE____ (Allison Recalde)
+def p_condicion(p):
+    '''
+    condicion : BOOLEAN
+                 | comparaciones
+    '''
+
+
+def p_sentencias_while(p):
+    '''
+    cuerpoF : WHILE condicion DO
+               | WHILE condicion
+               | WHILE PAREN_IZQ condicion PAREN_DER DO
+               | WHILE PAREN_IZQ condicion PAREN_DER
     '''
 
 #__________________________ Estructura de datos : Array (Aguirre)  ______________________________________________
@@ -107,8 +131,13 @@ def p_elemento(p):
 
 
 
-
-
+#________IMPRIMIR DATOS______(Allison Recalde)
+def p_impresion(p):
+    '''cuerpoF : PRINT tipodato
+                  | PUTS tipodato
+                  | PRINT PAREN_IZQ tipodato PAREN_DER
+                  | PUTS PAREN_IZQ tipodato PAREN_DER
+    '''
 
 
 

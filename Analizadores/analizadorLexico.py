@@ -4,10 +4,10 @@ from RecursosPly.lex import lex
 palabrasReservadas = {
     'and': 'AND', 'break': 'BREAK', 'if': 'IF', 'else': 'ELSE', 'while': 'WHILE',
     'for': 'FOR', 'class': 'CLASS', 'return': 'RETURN', 'def': 'DEF', 'end': 'END',
-    'defined': 'DEFINED', 'module': 'MODULE', 'in': 'IN', 'or': 'OR',
+    'defined': 'DEFINED', 'module': 'MODULE', 'in': 'IN', 'or': 'OR', 'do': 'DO',
     'when': 'WHEN', 'then': 'THEN', 'rescue': 'RESCUE', 'retry': 'RETRY', 'self': 'SELF',
     'until': 'UNTIL', 'undef': 'UNDEF', 'redo': 'REDO', 'unless': 'UNLESS', 'not': 'NOT',
-    'next': 'NEXT', 'case': 'CASE','print':'PRINT'}
+    'next': 'NEXT', 'case': 'CASE', 'print': 'PRINT', 'puts': 'PUTS'}
 
 # ------------------ Lista de ciertos tipos de datos - (Dennisse Aguirre) _________________________________
 
