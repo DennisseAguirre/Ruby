@@ -1,11 +1,9 @@
 from RecursosPly import yacc
 from analizadorLexico import tokens
 
-
 # Crear las siguientes reglas
 
 # 6. Cuerpo
-
 def p_cuerpo(p):
     '''cuerpo : cuerpoF
     | tiposfuncion
@@ -51,8 +49,6 @@ def p_variable(p):
     | TOKEN_VARIABLE_LOCAL
     | TOKEN_CONSTANTE
     | TOKEN_VARIABLE_DE_CLASE'''
-
-
 
 
 #___________________________ Operaciones matemáticas (Aguirre)_______________________________
@@ -120,6 +116,7 @@ def p_sentencias_while(p):
                | WHILE PAREN_IZQ condicion PAREN_DER
     '''
 
+
 #__________________________ Estructura de datos  ______________________________________________
 #Array (Aguirre)
 def p_array(p):
@@ -156,9 +153,21 @@ def p_funcion_intersect(p):
     '''
 
 #------------------------------ESTRUCTURA DE CONTROL------------------------------
-#------estrcutura case------
+#------estructura case------
 def p_estructura_case(p):
+    "estructura_case : CASE variable "
 
+def p_opcion_case(p):
+    '''opciones_case : ENTERO
+    | STRING
+    | FLOAT
+    | BOOLEAN
+    
+    '''
+def p_uso_case(p):
+    '''usos_case : WHEN
+
+    '''
 
 
 #________IMPRIMIR DATOS______(Allison Recalde)
@@ -196,3 +205,4 @@ while True:
         break
     if not s: continue
     validaRegla(s)
+

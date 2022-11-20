@@ -111,7 +111,6 @@ def t_STRING(t):
     r'\"[^".]*\"'
     return t
 
-
 # --------------------Funciones de definir variable (Jose Alcivar)--------------------
 bandera = []
 
