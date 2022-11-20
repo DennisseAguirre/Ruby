@@ -16,6 +16,7 @@ def p_cuerpo(p):
 def p_cuerpoF(p):
     '''cuerpoF : asignacion
     | operacionesmate
+    | comparaciones
     '''
 
 def p_tiposfuncion(p):
@@ -70,8 +71,16 @@ def p_signosmate(p):
 
 def p_operacionesmate(p):
     "operacionesmate : valormate signosmate valormate"
-
-
+#__________________________ Comparaciones (Allison Recalde)_______
+def p_comparaciones(p):
+    "comparaciones : valormate operadores_comparacion valormate"
+def p_operadores_comparacion(p):
+    ''' operadores_comparacion : IGUAL_COMPARACION
+    | DIFERENTE
+    | MAYOR_QUE
+    | MENOR_QUE
+    | MAYOR_IGUAL
+    | MENOR_IGUAL'''
 # Definicion de funcion
 #___________________________ Funciones que reciben 0 o n parámetros (Aguirre)_____________________
 
