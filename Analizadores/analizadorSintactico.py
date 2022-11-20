@@ -28,6 +28,7 @@ def p_tiposfuncion(p):
 
 def p_estructuradatos(p):
     '''estructuracontrol : array
+    | conjunto
      '''
     #
 
@@ -119,8 +120,8 @@ def p_sentencias_while(p):
                | WHILE PAREN_IZQ condicion PAREN_DER
     '''
 
-#__________________________ Estructura de datos : Array (Aguirre)  ______________________________________________
-
+#__________________________ Estructura de datos  ______________________________________________
+#Array (Aguirre)
 def p_array(p):
     "array : CORCHETE_IZQ elemento CORCHETE_DER"
 
@@ -128,6 +129,32 @@ def p_elemento(p):
     '''elemento : tipodato
         | tipodato COMA elemento
     '''
+
+#Set (Allison Recalde)
+def p_conjunto(p):
+    'conjunto : SET CORCHETE_IZQ elemento CORCHETE_DER'
+
+#Metodos de la estructura SET (Allison Recalde)
+def p_funcion_clear(p):
+    '''
+    conjunto : TOKEN_VARIABLE_LOCAL PUNTO CLEAR PAREN_IZQ PAREN_DER
+    | TOKEN_VARIABLE_LOCAL PUNTO CLEAR
+    '''
+def p_funcion_size(p):
+    '''
+    conjunto : TOKEN_VARIABLE_LOCAL PUNTO SIZE PAREN_IZQ PAREN_DER
+    '''
+def p_funcion_add(p):
+    '''
+    conjunto : TOKEN_VARIABLE_LOCAL PUNTO ADD PAREN_IZQ tipodato PAREN_DER
+    '''
+
+
+def p_funcion_intersect(p):
+    '''
+    conjunto : conjunto PUNTO INTERSECT SIGNO_INTERROGACION  conjunto
+    '''
+
 
 
 

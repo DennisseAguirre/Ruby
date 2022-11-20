@@ -7,7 +7,8 @@ palabrasReservadas = {
     'defined': 'DEFINED', 'module': 'MODULE', 'in': 'IN', 'or': 'OR', 'do': 'DO',
     'when': 'WHEN', 'then': 'THEN', 'rescue': 'RESCUE', 'retry': 'RETRY', 'self': 'SELF',
     'until': 'UNTIL', 'undef': 'UNDEF', 'redo': 'REDO', 'unless': 'UNLESS', 'not': 'NOT',
-    'next': 'NEXT', 'case': 'CASE', 'print': 'PRINT', 'puts': 'PUTS'}
+    'next': 'NEXT', 'case': 'CASE', 'print': 'PRINT', 'puts': 'PUTS', 'set': 'SET',
+    'clear': 'CLEAR', 'size': 'SIZE', 'add': 'ADD', 'intersect': 'INTERSECT'}
 
 # ------------------ Lista de ciertos tipos de datos - (Dennisse Aguirre) _________________________________
 
@@ -46,6 +47,7 @@ tokens = [
             # tokens de simbolos
             "COMA",
             "PUNTO",
+            "SIGNO_INTERROGACION",
 
             # tokens de operadores logicos
             "AND_OP",
@@ -91,6 +93,7 @@ t_MENOR_IGUAL = r'<='
 # --------------------Simbolos (Allison Recalde)--------------------
 t_COMA = r','
 t_PUNTO = r'\.'
+t_SIGNO_INTERROGACION = r'\?'
 
 # --------------------Operadores de asignacion (Allison Recalde)--------------------
 t_IGUAL = r'='
