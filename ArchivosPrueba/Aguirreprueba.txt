@@ -1,17 +1,25 @@
-
-arreglo=[1,2,3]
-cadenas=["Hola","Bye","Un gusto"]
-valor1=253
-valor2= 100
 bandera=true
-suma= valor1+valor2
-resta= valor1 - valor2
-multipli=valor1*valor2
-div=valor1/valor2
+while(bandera==true)
+  puts "***Bienvenido***** "
+  puts "Selecionar las siguientes opciones "
+  puts "1. Pedir edad "
+  puts "2.  Saludar "
+  puts "3. Salir  "
+  respuesta=gets.chomp
+  case respuesta
+  when "1"
+     puts "Dime tu edad: "
+     edad=gets.chomp
+    if edad<18
+      puts "Eres menor de edad"
+    else
+       puts "Eres mayor de edad"
+  when "2"
+      puts "Dime tu nombre"
+      nombre=gets.chomp
+      puts "Hola, #{nombre}"
+   when "3"
+     bandera=false
 
-if(suma>200 && resta!=100 || multipli<=40.3 )
-    bandera=false
-
-else
-    bandera=true
+  end
 end

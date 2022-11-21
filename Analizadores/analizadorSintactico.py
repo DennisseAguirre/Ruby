@@ -24,7 +24,6 @@ def p_cuerpoF(p):
 def p_tiposfuncion(p):
     '''tiposfuncion : funcionparametro
     | funcionsinparametro
-
     '''
 
 
@@ -296,4 +295,3 @@ while True:
         break
     if not s: continue
     validaRegla(s)
-
