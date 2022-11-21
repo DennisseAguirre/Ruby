@@ -131,7 +131,12 @@ def p_sentencias_while(p):
 
 #IF ELSE ____ _____(Dennisse Aguirre)_________________________________________
 def p_ifelse(p):
-        "ifelse : IF cond ELSE END"
+    '''
+            ifelse : IF cond ELSE END
+             | IF multicond ELSE END
+             | IF multicond cuerpoF ELSE cuerpoF END
+             | IF cond cuerpoF ELSE cuerpoF END
+             '''
 
 def p_valorencondiciones(p):
     '''
@@ -142,7 +147,17 @@ def p_valorencondiciones(p):
 def p_cond(p):
     "cond : valorencondiciones operadores_comparacion valorencondiciones"
 
+def p_operadoreslogicos(p):
+    '''
+          operadoreslogicos : AND_OP
+          | OR_OP
+          '''
 
+def p_multicond(p):
+    '''
+            multicond : cond operadoreslogicos cond
+             | cond operadoreslogicos multicond
+             '''
 
 
 
