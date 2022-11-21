@@ -7,10 +7,11 @@ from analizadorLexico import tokens
 def p_cuerpo(p):
     '''cuerpo : cuerpoF
     | tiposfuncion
-    | estructuracontrol
+    | estructuradatos
     | estructuracase
     | pedirporteclado
     | estructurahash
+    | estructuracontrol
     '''
 
 
@@ -28,10 +29,17 @@ def p_tiposfuncion(p):
 
 
 def p_estructuradatos(p):
-    '''estructuracontrol : array
+    '''estructuradatos : array
     | conjunto
      '''
     #
+
+def p_estructuracontrol(p):
+    '''estructuracontrol : ifelse
+       | sentencias_while
+        '''
+
+
 
 def p_tipodato(p):
     '''tipodato : ENTERO
@@ -54,7 +62,7 @@ def p_variable(p):
     | TOKEN_VARIABLE_DE_CLASE'''
 
 
-#___________________________ Operaciones matemáticas (Aguirre)_______________________________
+#___________________________ Operaciones matemáticas (Dennisse Aguirre)_______________________________
 def p_valormate(p):
     '''valormate : ENTERO
         | FLOAT
@@ -70,7 +78,9 @@ def p_signosmate(p):
     '''
 
 def p_operacionesmate(p):
-    "operacionesmate : valormate signosmate valormate"
+    '''operacionesmate : valormate signosmate valormate
+                       | valormate signosmate operacionesmate
+    '''
 #__________________________ Comparaciones (Allison Recalde)_______
 def p_comparaciones(p):
     "comparaciones : valormate mas_comparaciones"
@@ -113,15 +123,31 @@ def p_condicion(p):
 
 def p_sentencias_while(p):
     '''
-    cuerpoF : WHILE condicion DO
+    sentencias_while : WHILE condicion DO
                | WHILE condicion
                | WHILE PAREN_IZQ condicion PAREN_DER DO
                | WHILE PAREN_IZQ condicion PAREN_DER
     '''
 
+#IF ELSE ____ _____(Dennisse Aguirre)_________________________________________
+def p_ifelse(p):
+        "ifelse : IF cond ELSE END"
+
+def p_valorencondiciones(p):
+    '''
+         valorencondiciones : valormate
+          | TOKEN_VARIABLE_LOCAL
+          '''
+
+def p_cond(p):
+    "cond : valorencondiciones operadores_comparacion valorencondiciones"
+
+
+
+
 
 #__________________________ Estructura de datos  ______________________________________________
-#Array (Aguirre)
+#Array____________ (Dennisse Aguirre)__________________________________
 def p_array(p):
     "array : CORCHETE_IZQ elemento CORCHETE_DER"
 
@@ -130,7 +156,27 @@ def p_elemento(p):
         | tipodato COMA elemento
     '''
 
-#Set (Allison Recalde)
+def p_funcion_length(p):
+    '''
+    array : TOKEN_VARIABLE_LOCAL PUNTO LENGTH
+    '''
+def p_funcion_push(p):
+    '''
+   array : TOKEN_VARIABLE_LOCAL PUNTO PUSH PAREN_IZQ ENTERO PAREN_DER
+    '''
+
+def p_obtener_elemento(p):
+    '''
+   array : TOKEN_VARIABLE_LOCAL CORCHETE_IZQ ENTERO CORCHETE_DER
+    '''
+
+def p_funcion_first(p):
+    '''
+    array : TOKEN_VARIABLE_LOCAL PUNTO FIRST PAREN_IZQ PAREN_DER
+    '''
+
+
+#Set ______________(Allison Recalde)_____________________________________________
 def p_conjunto(p):
     'conjunto : SET CORCHETE_IZQ elemento CORCHETE_DER'
 

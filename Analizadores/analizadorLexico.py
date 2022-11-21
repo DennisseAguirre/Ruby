@@ -9,7 +9,7 @@ palabrasReservadas = {
     'until': 'UNTIL', 'undef': 'UNDEF', 'redo': 'REDO', 'unless': 'UNLESS', 'not': 'NOT',
     'next': 'NEXT', 'case': 'CASE', 'print': 'PRINT', 'puts': 'PUTS', 'set': 'SET',
     'clear': 'CLEAR', 'size': 'SIZE', 'add': 'ADD', 'intersect': 'INTERSECT', 'gets': 'GETS',
-    'chomp': 'CHOMP'}
+    'chomp': 'CHOMP', 'length': 'LENGTH', 'push': 'PUSH',  'first': 'FIRST'}
 
 # ------------------ Lista de ciertos tipos de datos - (Dennisse Aguirre) _________________________________
 
