@@ -2,8 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f3dc3c8a-50b6-4ee6-9118-adff2c2c5b10" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/ArchivosPrueba/log.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Analizadores/analizadorSintactico.py" beforeDir="false" afterPath="$PROJECT_DIR$/Analizadores/analizadorSintactico.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ArchivosPrueba/Aguirreprueba.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ArchivosPrueba/Aguirreprueba.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ArchivosPrueba/Recaldeprueba.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ArchivosPrueba/Recaldeprueba.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,10 +20,18 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2HpfmUqL3QpgUHOv11fo0CDjmRC" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true"
+  }
+}]]></component>
   <component name="RunManager" selected="Python.analizadorSintactico">
     <configuration name="analizadorLexico" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Ruby" />
@@ -92,5 +103,8 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
 </project>

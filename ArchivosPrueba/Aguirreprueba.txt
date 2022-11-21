@@ -1,4 +1,5 @@
 bandera=true
+
 while(bandera==true)
   puts "***Bienvenido***** "
   puts "Selecionar las siguientes opciones "
@@ -10,10 +11,11 @@ while(bandera==true)
   when "1"
      puts "Dime tu edad: "
      edad=gets.chomp
-    if edad<18
-      puts "Eres menor de edad"
+    if edad!=""
+       puts "Tu edad es #{edad} años"
+
     else
-       puts "Eres mayor de edad"
+       print "No has escrito nada"
   when "2"
       puts "Dime tu nombre"
       nombre=gets.chomp
@@ -23,3 +25,7 @@ while(bandera==true)
 
   end
 end
+
+def calculararea(ladoa,ladob)
+   b= ladoa*ladob/2
+   return b

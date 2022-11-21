@@ -1,6 +1,6 @@
 from RecursosPly import yacc
 from analizadorLexico import tokens
-
+from datetime import datetime
 # Crear las siguientes reglas
 
 # 6. Cuerpo
@@ -295,6 +295,19 @@ parser = yacc.yacc()
 def validaRegla(s):
     result = parser.parse(s)
     print(result)
+
+
+ruta = "../ArchivosPrueba/"
+archivos = ["Aguirreprueba.txt", "Recaldeprueba.txt","AlcivarPrueba.txt", "log.txt"]
+
+a=ruta + archivos[1]
+file = open(a)
+archivo = file.read()
+archivolog=open(ruta + archivos[3],"a")
+fechahora=str(datetime.now())
+archivolog.write("\n"+fechahora+" "+ a)
+archivolog.close()
+file.close()
 
 
 while True:
