@@ -24,6 +24,7 @@ def p_cuerpoF(p):
 def p_tiposfuncion(p):
     '''tiposfuncion : funcionparametro
     | funcionsinparametro
+    | funcionreturn
     '''
 
 
@@ -100,7 +101,15 @@ def p_operadores_comparacion(p):
 
 # Definicion de funcion
 #___________________________ Funciones que reciben 0 o n parámetros (Aguirre)_____________________
+def p_tiporeturn(p):
+    '''tiporeturn : RETURN TOKEN_VARIABLE_LOCAL
+        | RETURN tipodato
+        '''
 
+def p_funcionreturn(p):
+    '''funcionreturn : DEF TOKEN_NOMBRE_FUNCION PAREN_IZQ parametro PAREN_DER cuerpoF tiporeturn END
+            | DEF TOKEN_NOMBRE_FUNCION cuerpoF tiporeturn END
+            '''
 def p_funcionparametro(p):
     "funcionparametro : DEF TOKEN_NOMBRE_FUNCION PAREN_IZQ parametro PAREN_DER cuerpoF END"
 
