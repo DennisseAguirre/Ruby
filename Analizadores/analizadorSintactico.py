@@ -10,6 +10,7 @@ def p_cuerpo(p):
     | estructuracontrol
     | estructuracase
     | pedirporteclado
+    | estructurahash
     '''
 
 
@@ -178,10 +179,22 @@ def p_usocase(p):
 #------------------------------ESTRUCTURA DE DATOS------------------------------
 #------estructura HASH (Jose Alcivar)------
 def p_estructurahash(p):
-    'estructurahash : LLAVE_IZQ LLAVE_DER'
+    '''estructurahash : LLAVE_IZQ elementohash LLAVE_DER
+    | LLAVE_IZQ LLAVE_DER'''
 
 def p_elementohash(p):
-    'eleementohash : '
+    '''elementohash : parhash
+    | parhash COMA elementohash'''
+
+def p_parhash(p):
+    'parhash : clavehash ASIGNACION_HASH valorhash'
+
+def p_clavehash(p):
+    '''clavehash : STRING
+    | ENTERO'''
+
+def p_valorhash(p):
+    'valorhash : tipodato'
 
 #------------------------------PEDIR DATOS TECLADO------------------------------
 #------pedir datos por teclado (Jose Alcivar)------
