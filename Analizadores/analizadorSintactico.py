@@ -175,9 +175,16 @@ def p_usocase(p):
     | WHEN opcioncase usocase
     '''
 
+#------------------------------ESTRUCTURA DE DATOS------------------------------
+#------estructura HASH (Jose Alcivar)------
+def p_estructurahash(p):
+    'estructurahash : LLAVE_IZQ LLAVE_DER'
+
+def p_elementohash(p):
+    'eleementohash : '
 
 #------------------------------PEDIR DATOS TECLADO------------------------------
-#------pedir datos por teclado (Jose Alcivar)
+#------pedir datos por teclado (Jose Alcivar)------
 def p_pedirporteclado(p):
     '''pedirporteclado : variable IGUAL GETS
     | variable IGUAL GETS PUNTO CHOMP'''
@@ -190,9 +197,6 @@ def p_impresion(p):
                   | PRINT PAREN_IZQ tipodato PAREN_DER
                   | PUTS PAREN_IZQ tipodato PAREN_DER
     '''
-
-
-
 
 def p_error(p):
     if p:
