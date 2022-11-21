@@ -9,6 +9,7 @@ def p_cuerpo(p):
     | tiposfuncion
     | estructuracontrol
     | estructuracase
+    | pedirporteclado
     '''
 
 
@@ -173,6 +174,13 @@ def p_usocase(p):
     '''usocase : WHEN opcioncase
     | WHEN opcioncase usocase
     '''
+
+
+#------------------------------PEDIR DATOS TECLADO------------------------------
+#------pedir datos por teclado (Jose Alcivar)
+def p_pedirporteclado(p):
+    '''pedirporteclado : variable IGUAL GETS
+    | variable IGUAL GETS PUNTO CHOMP'''
 
 
 #________IMPRIMIR DATOS______(Allison Recalde)
