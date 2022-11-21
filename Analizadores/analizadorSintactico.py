@@ -8,6 +8,7 @@ def p_cuerpo(p):
     '''cuerpo : cuerpoF
     | tiposfuncion
     | estructuracontrol
+    | estructuracase
     '''
 
 
@@ -153,20 +154,24 @@ def p_funcion_intersect(p):
     '''
 
 #------------------------------ESTRUCTURA DE CONTROL------------------------------
-#------estructura case------
-def p_estructura_case(p):
-    "estructura_case : CASE variable "
+#------estructura case (Jose Alcivar)------
+def p_estructuracase(p):
+    'estructuracase : CASE variable usocase'
 
-def p_opcion_case(p):
-    '''opciones_case : ENTERO
+def p_opcioncase(p):
+    '''opcioncase : ENTERO
     | STRING
     | FLOAT
     | BOOLEAN
-    
-    '''
-def p_uso_case(p):
-    '''usos_case : WHEN
+    | rango'''
 
+def p_rango(p):
+    'rango : PAREN_IZQ ENTERO PUNTO PUNTO ENTERO PAREN_DER'
+
+
+def p_usocase(p):
+    '''usocase : WHEN opcioncase
+    | WHEN opcioncase usocase
     '''
 
 
