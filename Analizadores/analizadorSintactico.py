@@ -278,6 +278,29 @@ def p_clavehash(p):
 def p_valorhash(p):
     'valorhash : tipodato'
 
+
+#------funciones HASH (Jose Alcivar)------
+
+def p_retornarvalorhash(p):
+    'estructurahash : TOKEN_VARIABLE_LOCAL CORCHETE_IZQ clavehash CORCHETE_DER'
+    print("retornar valor de clave")
+
+def p_agregarclavehash(p):
+    'estructurahash : TOKEN_VARIABLE_LOCAL CORCHETE_IZQ clavehash CORCHETE_DER IGUAL valorhash'
+    print("agregar clave valor al hash")
+
+def p_borrarclavehash(p):
+    'estructurahash : TOKEN_VARIABLE_LOCAL PUNTO DELETE PAREN_IZQ clavehash PAREN_DER'
+    print("borrar clave del hash")
+
+def p_clavesdelhash(p):
+    'estructurahash : TOKEN_VARIABLE_LOCAL PUNTO KEYS'
+    print("extraer claves del hash")
+
+def p_valoresdelhash(p):
+    'estructurahash : TOKEN_VARIABLE_LOCAL PUNTO VALUES'
+    print("extraer valores del hash")
+
 #------------------------------PEDIR DATOS TECLADO------------------------------
 #------pedir datos por teclado (Jose Alcivar)------
 def p_pedirporteclado(p):
@@ -312,14 +335,14 @@ def validaRegla(s):
 
 
 ruta = "../ArchivosPrueba/"
-archivos = ["Aguirreprueba.txt", "Recaldeprueba.txt", "AlcivarPrueba.txt", "log.txt"]
+archivos = ["Aguirreprueba.txt", "Recaldeprueba.txt", "AlcivarPrueba.txt"]
 
 a = ruta + archivos[2] ##reemplazar el indice del archivo
 file = open(a)
 archivo = file.readlines()
 file.close()
 
-archivolog=open(ruta + archivos[3],"a")
+archivolog=open(ruta + "log.txt","a")
 fechahora=str(datetime.now())
 archivolog.write("\n"+fechahora+" "+ a)
 archivolog.close()
