@@ -27,3 +27,5 @@ fecha-hora  NombreArchivo
 2022-11-21 23:43:20.538494 ../ArchivosPrueba/AlcivarPrueba.txt
 2022-11-21 23:46:59.084777 ../ArchivosPrueba/AlcivarPrueba.txt
 2022-11-21 23:48:39.903811 ../ArchivosPrueba/AlcivarPrueba.txt
+2022-11-21 23:54:57.112101 ../ArchivosPrueba/AlcivarPrueba.txt
+2022-11-21 23:55:40.449999 ../ArchivosPrueba/AlcivarPrueba.txt

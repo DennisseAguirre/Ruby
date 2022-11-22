@@ -236,8 +236,8 @@ def p_funcion_intersect(p):
 #------------------------------ESTRUCTURA DE CONTROL------------------------------
 #------estructura case (Jose Alcivar)------
 def p_estructuracase(p):
-    'estructuracase : CASE variable'
-    #print("estructuracase")
+    'estructuracase : CASE variable usocase'
+    print("estructuracase")
 
 def p_opcioncase(p):
     '''opcioncase : ENTERO
@@ -255,7 +255,6 @@ def p_usocase(p):
     '''usocase : WHEN opcioncase
     | WHEN opcioncase usocase
     '''
-    print("usocase")
 
 #------------------------------ESTRUCTURA DE DATOS------------------------------
 #------estructura HASH (Jose Alcivar)------
