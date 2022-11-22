@@ -3,9 +3,9 @@ bandera=true
 while(bandera==true)
   puts "***Bienvenido***** "
   puts "Selecionar las siguientes opciones "
-  puts "1. Pedir edad "
-  puts "2.  Saludar "
-  puts "3. Salir  "
+  puts "1 Pedir edad "
+  puts "2  Saludar "
+  puts "3 Salir  "
   respuesta=gets.chomp
   case respuesta
   when "1"
@@ -16,13 +16,14 @@ while(bandera==true)
 
     else
        print "No has escrito nada"
+       puts "Eres mayor de edad"
+    end
   when "2"
       puts "Dime tu nombre"
       nombre=gets.chomp
       puts "Hola, #{nombre}"
    when "3"
      bandera=false
-
   end
 end
 

@@ -8,10 +8,9 @@ def p_cuerpo(p):
     '''cuerpo : cuerpoF
     | tiposfuncion
     | estructuradatos
-    | estructuracase
     | pedirporteclado
-    | estructurahash
     | estructuracontrol
+    | usocase
     '''
 
 
@@ -19,6 +18,7 @@ def p_cuerpoF(p):
     '''cuerpoF : asignacion
     | operacionesmate
     | comparaciones
+    | impresion
     '''
 
 def p_tiposfuncion(p):
@@ -31,12 +31,14 @@ def p_tiposfuncion(p):
 def p_estructuradatos(p):
     '''estructuradatos : array
     | conjunto
+    | estructurahash
      '''
     #
 
 def p_estructuracontrol(p):
     '''estructuracontrol : ifelse
        | sentencias_while
+       | estructuracase
         '''
 
 
@@ -51,7 +53,10 @@ def p_tipodato(p):
 # ___________________________Asignación de variables- (Alcivar) _______________________
 
 def p_asignacion(p):
-    "asignacion : variable IGUAL tipodato"
+    '''asignacion : variable IGUAL tipodato
+    | variable IGUAL estructuradatos
+    | variable IGUAL operacionesmate'''
+    print("asignacion")
 
 
 def p_variable(p):
@@ -64,8 +69,8 @@ def p_variable(p):
 
 #___________________________ Operaciones matemáticas (Dennisse Aguirre)_______________________________
 def p_valormate(p):
-    '''valormate : ENTERO
-        | FLOAT
+    '''valormate : tipodato
+    | variable
     '''
 
 def p_signosmate(p):
@@ -81,6 +86,8 @@ def p_operacionesmate(p):
     '''operacionesmate : valormate signosmate valormate
                        | valormate signosmate operacionesmate
     '''
+    print("operaciones matematicas")
+
 #__________________________ Comparaciones (Allison Recalde)_______
 def p_comparaciones(p):
     "comparaciones : valormate mas_comparaciones"
@@ -145,6 +152,7 @@ def p_ifelse(p):
              | IF multicond cuerpoF ELSE cuerpoF END
              | IF cond cuerpoF ELSE cuerpoF END
              '''
+    print("if else")
 
 def p_valorencondiciones(p):
     '''
@@ -173,6 +181,7 @@ def p_multicond(p):
 #Array____________ (Dennisse Aguirre)__________________________________
 def p_array(p):
     "array : CORCHETE_IZQ elemento CORCHETE_DER"
+    print("arreglo")
 
 def p_elemento(p):
     '''elemento : tipodato
@@ -227,7 +236,8 @@ def p_funcion_intersect(p):
 #------------------------------ESTRUCTURA DE CONTROL------------------------------
 #------estructura case (Jose Alcivar)------
 def p_estructuracase(p):
-    'estructuracase : CASE variable usocase'
+    'estructuracase : CASE variable'
+    #print("estructuracase")
 
 def p_opcioncase(p):
     '''opcioncase : ENTERO
@@ -235,6 +245,7 @@ def p_opcioncase(p):
     | FLOAT
     | BOOLEAN
     | rango'''
+
 
 def p_rango(p):
     'rango : PAREN_IZQ ENTERO PUNTO PUNTO ENTERO PAREN_DER'
@@ -244,12 +255,14 @@ def p_usocase(p):
     '''usocase : WHEN opcioncase
     | WHEN opcioncase usocase
     '''
+    print("usocase")
 
 #------------------------------ESTRUCTURA DE DATOS------------------------------
 #------estructura HASH (Jose Alcivar)------
 def p_estructurahash(p):
     '''estructurahash : LLAVE_IZQ elementohash LLAVE_DER
     | LLAVE_IZQ LLAVE_DER'''
+    print("estructura hash")
 
 def p_elementohash(p):
     '''elementohash : parhash
@@ -270,15 +283,17 @@ def p_valorhash(p):
 def p_pedirporteclado(p):
     '''pedirporteclado : variable IGUAL GETS
     | variable IGUAL GETS PUNTO CHOMP'''
+    print("pedir por teclado")
 
 
 #________IMPRIMIR DATOS______(Allison Recalde)
 def p_impresion(p):
-    '''cuerpoF : PRINT tipodato
+    '''impresion : PRINT tipodato
                   | PUTS tipodato
                   | PRINT PAREN_IZQ tipodato PAREN_DER
                   | PUTS PAREN_IZQ tipodato PAREN_DER
     '''
+    print("impresion")
 
 def p_error(p):
     if p:
@@ -291,23 +306,31 @@ def p_error(p):
 # Build the parser
 parser = yacc.yacc()
 
-
 def validaRegla(s):
     result = parser.parse(s)
     print(result)
 
 
 ruta = "../ArchivosPrueba/"
-archivos = ["Aguirreprueba.txt", "Recaldeprueba.txt","AlcivarPrueba.txt", "log.txt"]
+archivos = ["Aguirreprueba.txt", "Recaldeprueba.txt", "AlcivarPrueba.txt", "log.txt"]
 
-a=ruta + archivos[1]
+a = ruta + archivos[2] ##reemplazar el indice del archivo
 file = open(a)
-archivo = file.read()
+archivo = file.readlines()
+file.close()
+
 archivolog=open(ruta + archivos[3],"a")
 fechahora=str(datetime.now())
 archivolog.write("\n"+fechahora+" "+ a)
 archivolog.close()
-file.close()
+
+
+#archivos = ["Aguirreprueba.txt", "Recaldeprueba.txt", "AlcivarPrueba.txt", "hola.txt"]
+#file = open(a)
+#archivo = file.readlines()
+#file.close()
+for linea in archivo:
+    validaRegla(linea)
 
 
 while True:

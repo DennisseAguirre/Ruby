@@ -2,3 +2,10 @@ fecha-hora  NombreArchivo
 2022-11-21 15:58:01.809910 ../ArchivosPrueba/AlcivarPrueba.txt
 2022-11-21 16:10:45.283953 ../ArchivosPrueba/Aguirreprueba.txt
 2022-11-21 16:22:49.802999 ../ArchivosPrueba/Recaldeprueba.txt
+2022-11-21 22:59:19.441735 ../ArchivosPrueba/Recaldeprueba.txt
+2022-11-21 22:59:54.083483 ../ArchivosPrueba/Recaldeprueba.txt
+2022-11-21 23:00:23.408261 ../ArchivosPrueba/Recaldeprueba.txt
+2022-11-21 23:00:52.154155 ../ArchivosPrueba/Recaldeprueba.txt
+2022-11-21 23:05:39.712449 ../ArchivosPrueba/Aguirreprueba.txt
+2022-11-21 23:05:55.492283 ../ArchivosPrueba/Recaldeprueba.txt
+2022-11-21 23:06:07.088741 ../ArchivosPrueba/AlcivarPrueba.txt

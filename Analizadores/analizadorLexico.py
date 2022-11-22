@@ -65,9 +65,14 @@ tokens = [
              # Token de funcion (Jose Alcivar)
             "TOKEN_NOMBRE_FUNCION",
 
-            "NOMBRE_CLASE"
+            "NOMBRE_CLASE",
+
+            "SALTO_DE_LINEA",
+            "TABULADOR"
          ] + list(palabrasReservadas.values()) + tipoDatos
 
+t_SALTO_DE_LINEA = r'\n+'
+t_TABULADOR = r'\t+'
 # --------------------Operadores aritmeticos (Allison Recalde) --------------------
 t_MAS = r'\+'
 t_MENOS = r'-'
@@ -198,11 +203,11 @@ def t_error(t):
 # Build the lexer
 lexer = lex()
 
-'''
 def getTokens(lexer):
     for tok in lexer:
         print(tok)
 
+'''
 ruta = "../ArchivosPrueba/"
 archivos = ["Aguirreprueba.txt", "Recaldeprueba.txt","AlcivarPrueba.txt"]
 
@@ -211,6 +216,9 @@ archivo = file.read()
 file.close()
 lexer.input(archivo)
 getTokens(lexer)
+'''
+
+'''
 linea = " "
 
 while linea != "":
