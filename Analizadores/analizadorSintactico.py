@@ -158,6 +158,10 @@ def p_ifelse(p):
              | IF multicond ELSE END
              | IF multicond cuerpoF ELSE cuerpoF END
              | IF cond cuerpoF ELSE cuerpoF END
+            | IF cond SALTO_DE_LINEA ELSE SALTO_DE_LINEA END
+            | IF multicond SALTO_DE_LINEA ELSE SALTO_DE_LINEA END
+            | IF multicond SALTO_DE_LINEA cuerpoF SALTO_DE_LINEA ELSE SALTO_DE_LINEA cuerpoF SALTO_DE_LINEA END
+            | IF cond SALTO_DE_LINEA cuerpoF SALTO_DE_LINEA ELSE SALTO_DE_LINEA cuerpoF SALTO_DE_LINEA END
              '''
     print("if else")
 
