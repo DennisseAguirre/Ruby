@@ -3,10 +3,11 @@ from analizadorLexico import tokens
 from datetime import datetime
 # Crear las siguientes reglas
 
-
 def p_bloque(p):
-    '''bloque : cuerpo SALTO_DE_LINEA bloque
-                 |cuerpo'''
+    '''bloque : cuerpo SALTO_DE_LINEA cuerpo
+                 | cuerpo SALTO_DE_LINEA bloque
+                 '''
+
 
 # 6. Cuerpo
 def p_cuerpo(p):
