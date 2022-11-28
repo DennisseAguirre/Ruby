@@ -4,7 +4,7 @@ from datetime import datetime
 # Crear las siguientes reglas
 
 resultado = ""
-
+arreglo=[]
 def p_bloque(p):
     '''bloque : cuerpo SALTO_DE_LINEA cuerpo
                  | cuerpo SALTO_DE_LINEA bloque
@@ -115,7 +115,7 @@ def p_expresionesmate(p):
     #elif p[2] == '%':
     #  p[0] = p[1] % p[3]
     #elif p[2] == '**':
-    #  p[0] = p[1] ** p[3]
+    #  p[0] = p[1] + p[2] + p[3]
 
 def p_operacionesmate(p):
     '''operacionesmate : expresionesmate
@@ -235,12 +235,14 @@ def p_multicond(p):
 #Array____________ (Dennisse Aguirre)__________________________________
 def p_array(p):
     "array : CORCHETE_IZQ elemento CORCHETE_DER"
-    print("arreglo")
+    #print("arreglo")
+    #p[0] = arreglo
 
 def p_elemento(p):
     '''elemento : tipodato
         | tipodato COMA elemento
     '''
+    #p[0] = p[1]
 
 def p_funcion_length(p):
     '''
@@ -253,9 +255,14 @@ def p_funcion_push(p):
 
 def p_obtener_elemento(p):
     '''
-   array : TOKEN_VARIABLE_LOCAL CORCHETE_IZQ ENTERO CORCHETE_DER
+   array :  TOKEN_VARIABLE_LOCAL CORCHETE_IZQ ENTERO CORCHETE_DER
     '''
+    # Regla semantica para obtener elemento de un array - (Dennisse Aguirre)
+    #arreglo[p[2]]
+    #p[0] = p[1]
+    print("obtener elemento")
 
+ #array : TOKEN_VARIABLE_LOCAL CORCHETE_IZQ ENTERO CORCHETE_DER
 def p_funcion_first(p):
     '''
     array : TOKEN_VARIABLE_LOCAL PUNTO FIRST PAREN_IZQ PAREN_DER
