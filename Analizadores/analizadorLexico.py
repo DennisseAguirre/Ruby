@@ -202,11 +202,11 @@ def t_error(t):
 
 
 # Build the lexer
-#lexer = lex()
+lexer = lex()
 
-#def getTokens(lexer):
-#    for tok in lexer:
-#        print(tok)
+'''def getTokens(lexer):
+    for tok in lexer:
+       print(tok)'''
 
 '''
 ruta = "../ArchivosPrueba/"
@@ -219,16 +219,16 @@ lexer.input(archivo)
 getTokens(lexer)
 '''
 
-'''
-linea = " "
+
+'''linea = " "
 
 while linea != "":
     linea = input(">>")
     lexer.input(linea)
     getTokens(lexer)
 # Tokenize
-print("Succesfull")
-'''
+print("Succesfull")'''
+
 
 def getTokens(info):
     resultado = ''

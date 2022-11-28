@@ -3,6 +3,8 @@ from analizadorLexico import tokens
 from datetime import datetime
 # Crear las siguientes reglas
 
+resultado = ""
+
 def p_bloque(p):
     '''bloque : cuerpo SALTO_DE_LINEA cuerpo
                  | cuerpo SALTO_DE_LINEA bloque
@@ -61,8 +63,8 @@ def p_asignacion(p):
     '''asignacion : variable IGUAL tipodato
     | variable IGUAL estructuradatos
     | variable IGUAL operacionesmate'''
-    print("asignacion")
-
+    global resultado
+    resultado += f'\n Se ha hecho una asignacion, con variable igual a {p[1]} y valor {p[3]}'
 
 def p_variable(p):
     '''variable : TOKEN_VARIABLE_GLOBAL
@@ -323,19 +325,18 @@ def p_impresion(p):
     print("impresion")
 
 def p_error(p):
+    global resultado
     if p:
-        print(f"Error de sintaxis - Token: {p.type}, Línea: {p.lineno}, Col: {p.lexpos}")
-        parser.errok()
+        resultado += f'\n Error de sintaxis, tipo {str(p.type)} con valor: {str(p.value)}'
     else:
-        print("Error de sintaxis Fin de Linea")
-
+        resultado += '\n Error Sintactico!'
 
 # Build the parser
 parser = yacc.yacc()
 
-def validaRegla(s):
+'''def validaRegla(s):
     result = parser.parse(s)
-    print(result)
+    print(result)'''
 
 
 ruta = "../ArchivosPrueba/"
@@ -360,10 +361,24 @@ archivolog.close()
   #  validaRegla(linea)
 
 
-while True:
+'''while True:
     try:
         s = input('calc > ')
     except EOFError:
         break
     if not s: continue
-    validaRegla(s)
+    validaRegla(s)'''
+
+def obtenerSintactico(info):
+    global resultado
+    resultado += ""
+    while True:
+        try:
+            s = info
+        except EOFError:
+            break
+        if not s: continue
+        result = parser.parse(s)
+        break
+    print(resultado)
+    return resultado

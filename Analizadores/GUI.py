@@ -3,7 +3,7 @@ import sys
 from PyQt5 import QtCore
 from PyQt5 import QtGui
 from analizadorLexico import getTokens
-#from sintactico import getSintactico
+from analizadorSintactico import obtenerSintactico
 
 
 class Window(QWidget):
@@ -48,7 +48,7 @@ class Window(QWidget):
         self.botonLexico.clicked.connect(self.lexico)
         self.botonSintactico = QPushButton("Sintactico")
         self.botonSintactico.setMaximumHeight(50)
-        #self.botonSintactico.clicked.connect(self.sintactico)
+        self.botonSintactico.clicked.connect(self.sintactico)
 
         #Contenedor Output
         self.cont_out = QHBoxLayout(self)
@@ -87,14 +87,14 @@ class Window(QWidget):
         self.textLex.clear()
         self.textLex.insertPlainText(getTokens(self.editor.toPlainText()))
 
-    '''def sintactico(self):
+    def sintactico(self):
         self.textSint.clear()
-        res = getSintactico(self.editor.toPlainText())
-        if  len(res) > 0:
+        res = obtenerSintactico(self.editor.toPlainText())
+        if len(res) > 0:
             self.textSint.insertPlainText(res)
         else:
             self.textSint.insertPlainText("Todo Semanticamente Correcto!")
-        pass'''
+        pass
 
 app = QApplication(sys.argv)
 window = Window()
