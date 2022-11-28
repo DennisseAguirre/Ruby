@@ -79,6 +79,12 @@ def p_valormate(p):
     '''valormate : tipodato
     | variable
     '''
+def p_valornum(p):
+    '''valornum : ENTERO
+    | FLOAT
+    '''
+    #p[0] = p[1] = p[3]
+
 
 def p_signosmate(p):
     '''signosmate : MAS
@@ -89,9 +95,31 @@ def p_signosmate(p):
     | POTENCIA
     '''
 
+def p_expresionesmate(p):
+    '''expresionesmate : valornum MAS valornum
+    | valornum MENOS valornum
+    | valornum MULTIPLICACION valornum
+    | valornum DIVISION valornum
+    | valornum MODULO valornum
+    | valornum POTENCIA valornum
+    '''
+    # Regla semantica con operaciones aritmeticas - (Dennisse Aguirre)
+    #if p[2] == '+':
+    # p[0] = p[1] + p[3]
+    #elif p[2] == '-':
+    #  p[0] = p[1] - p[3]
+    #elif p[2] == '*':
+    # p[0] = p[1] * p[3]
+    #elif p[2] == '/':
+    #  p[0] = p[1] / p[3]
+    #elif p[2] == '%':
+    #  p[0] = p[1] % p[3]
+    #elif p[2] == '**':
+    #  p[0] = p[1] ** p[3]
+
 def p_operacionesmate(p):
-    '''operacionesmate : valormate signosmate valormate
-                       | valormate signosmate operacionesmate
+    '''operacionesmate : expresionesmate
+                       | expresionesmate signosmate operacionesmate
     '''
     print("operaciones matematicas")
 

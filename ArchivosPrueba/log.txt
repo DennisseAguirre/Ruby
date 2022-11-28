@@ -78,3 +78,16 @@ fecha-hora  NombreArchivo
 2022-11-28 11:05:00.458124 ../ArchivosPrueba/Aguirreprueba.txt
 2022-11-28 11:12:10.638341 ../ArchivosPrueba/Aguirreprueba.txt
 2022-11-28 11:21:47.386140 ../ArchivosPrueba/Aguirreprueba.txt
+2022-11-28 13:37:59.883593 ../ArchivosPrueba/Aguirreprueba.txt
+2022-11-28 13:43:07.162255 ../ArchivosPrueba/Aguirreprueba.txt
+2022-11-28 13:57:07.551615 ../ArchivosPrueba/Aguirreprueba.txt
+2022-11-28 13:58:35.485522 ../ArchivosPrueba/Aguirreprueba.txt
+2022-11-28 13:58:57.497492 ../ArchivosPrueba/Aguirreprueba.txt
+2022-11-28 14:00:12.105673 ../ArchivosPrueba/Aguirreprueba.txt
+2022-11-28 14:04:20.796035 ../ArchivosPrueba/Aguirreprueba.txt
+2022-11-28 14:06:22.250366 ../ArchivosPrueba/Aguirreprueba.txt
+2022-11-28 14:09:28.583747 ../ArchivosPrueba/Aguirreprueba.txt
+2022-11-28 14:17:58.664186 ../ArchivosPrueba/Aguirreprueba.txt
+2022-11-28 14:21:04.214957 ../ArchivosPrueba/Aguirreprueba.txt
+2022-11-28 14:22:27.734885 ../ArchivosPrueba/Aguirreprueba.txt
+2022-11-28 14:23:19.078268 ../ArchivosPrueba/Aguirreprueba.txt
