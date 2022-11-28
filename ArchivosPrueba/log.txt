@@ -77,3 +77,4 @@ fecha-hora  NombreArchivo
 2022-11-28 11:00:28.136548 ../ArchivosPrueba/Aguirreprueba.txt
 2022-11-28 11:05:00.458124 ../ArchivosPrueba/Aguirreprueba.txt
 2022-11-28 11:12:10.638341 ../ArchivosPrueba/Aguirreprueba.txt
+2022-11-28 11:21:47.386140 ../ArchivosPrueba/Aguirreprueba.txt

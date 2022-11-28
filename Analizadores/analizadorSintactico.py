@@ -141,8 +141,13 @@ def p_funcionsinparametro(p):
     print("funcion sin parametro ")
 
 def p_parametro(p):
-    '''parametro : variable
-    | variable COMA parametro
+    '''parametro : tipopar
+    | tipopar COMA parametro
+    '''
+
+def p_tipopar(p):
+    '''tipopar : tipodato
+    | variable
     '''
 #_________________________ Estructura de control______________
 #BUCLE WHILE____ (Allison Recalde)
