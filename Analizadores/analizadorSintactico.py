@@ -8,7 +8,6 @@ def p_bloque(p):
                  | cuerpo SALTO_DE_LINEA bloque
                  '''
 
-
 # 6. Cuerpo
 def p_cuerpo(p):
     '''cuerpo : cuerpoF
@@ -342,7 +341,7 @@ def validaRegla(s):
 ruta = "../ArchivosPrueba/"
 archivos = ["Aguirreprueba.txt", "Recaldeprueba.txt", "AlcivarPrueba.txt"]
 
-a = ruta + archivos[2] ##reemplazar el indice del archivo
+a = ruta + archivos[0] ##reemplazar el indice del archivo
 file = open(a)
 archivo = file.readlines()
 file.close()

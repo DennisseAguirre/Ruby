@@ -36,3 +36,9 @@ fecha-hora  NombreArchivo
 2022-11-28 00:54:39.622519 ../ArchivosPrueba/AlcivarPrueba.txt
 2022-11-28 00:56:32.442642 ../ArchivosPrueba/AlcivarPrueba.txt
 2022-11-28 00:56:57.130121 ../ArchivosPrueba/AlcivarPrueba.txt
+2022-11-28 00:58:36.137128 ../ArchivosPrueba/AlcivarPrueba.txt
+2022-11-28 01:02:08.658964 ../ArchivosPrueba/AlcivarPrueba.txt
+2022-11-28 01:06:55.491633 ../ArchivosPrueba/Aguirreprueba.txt
+2022-11-28 01:07:17.617973 ../ArchivosPrueba/Aguirreprueba.txt
+2022-11-28 01:11:24.927750 ../ArchivosPrueba/Aguirreprueba.txt
+2022-11-28 01:12:09.385115 ../ArchivosPrueba/Aguirreprueba.txt
