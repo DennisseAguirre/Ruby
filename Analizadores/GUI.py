@@ -57,10 +57,10 @@ class Window(QWidget):
 
         self.textLex = QPlainTextEdit(self)
         self.textLex.setReadOnly(True)
-        self.textLex.setPlaceholderText("Aqui aparecera el resultado del analizador Lexico")
+        self.textLex.setPlaceholderText("Resultado analizador Lexico")
         self.textSint = QPlainTextEdit(self)
         self.textSint.setReadOnly(True)
-        self.textSint.setPlaceholderText("Aqui aparecera el resultado del analizador sintactico y semantico")
+        self.textSint.setPlaceholderText("Resultado analizador Sintactico y Semantico")
 
         # Agregando a contenedor padre
         self.contenedor.addWidget(self.titulo)
