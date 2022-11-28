@@ -3,6 +3,11 @@ from analizadorLexico import tokens
 from datetime import datetime
 # Crear las siguientes reglas
 
+
+def p_bloque(p):
+    '''bloque : cuerpo SALTO_DE_LINEA bloque
+                 |cuerpo'''
+
 # 6. Cuerpo
 def p_cuerpo(p):
     '''cuerpo : cuerpoF
@@ -351,8 +356,8 @@ archivolog.close()
 #file = open(a)
 #archivo = file.readlines()
 #file.close()
-for linea in archivo:
-    validaRegla(linea)
+#for linea in archivo:
+  #  validaRegla(linea)
 
 
 while True:

@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="f3dc3c8a-50b6-4ee6-9118-adff2c2c5b10" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Analizadores/analizadorSintactico.py" beforeDir="false" afterPath="$PROJECT_DIR$/Analizadores/analizadorSintactico.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ArchivosPrueba/log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ArchivosPrueba/log.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,12 +25,13 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "last_opened_file_path": "C:/Users/Dennisse/Desktop/Ruby"
   }
-}</component>
-  <component name="RunManager" selected="Python.GUI">
+}]]></component>
+  <component name="RunManager" selected="Python.analizadorSintactico">
     <configuration name="GUI" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Ruby" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -136,8 +139,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.GUI" />
         <item itemvalue="Python.analizadorSintactico" />
+        <item itemvalue="Python.GUI" />
         <item itemvalue="Python.analizadorLexico" />
         <item itemvalue="Python.gui" />
         <item itemvalue="Python.sintactico" />
