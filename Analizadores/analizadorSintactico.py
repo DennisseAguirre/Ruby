@@ -123,12 +123,22 @@ def p_tiporeturn(p):
 def p_funcionreturn(p):
     '''funcionreturn : DEF TOKEN_NOMBRE_FUNCION PAREN_IZQ parametro PAREN_DER cuerpoF tiporeturn END
             | DEF TOKEN_NOMBRE_FUNCION cuerpoF tiporeturn END
+            | DEF TOKEN_NOMBRE_FUNCION PAREN_IZQ parametro PAREN_DER SALTO_DE_LINEA cuerpoF SALTO_DE_LINEA tiporeturn SALTO_DE_LINEA END
+            | DEF TOKEN_NOMBRE_FUNCION SALTO_DE_LINEA cuerpoF SALTO_DE_LINEA  tiporeturn SALTO_DE_LINEA END
             '''
+    print("funcion con retorno")
+
 def p_funcionparametro(p):
-    "funcionparametro : DEF TOKEN_NOMBRE_FUNCION PAREN_IZQ parametro PAREN_DER cuerpoF END"
+    '''funcionparametro : DEF TOKEN_NOMBRE_FUNCION PAREN_IZQ parametro PAREN_DER cuerpoF END
+     | DEF TOKEN_NOMBRE_FUNCION PAREN_IZQ parametro PAREN_DER SALTO_DE_LINEA cuerpoF SALTO_DE_LINEA END
+    '''
+    print("funcion con parametro")
 
 def p_funcionsinparametro(p):
-    "funcionsinparametro : DEF TOKEN_NOMBRE_FUNCION cuerpoF END"
+    '''funcionsinparametro : DEF TOKEN_NOMBRE_FUNCION cuerpoF END
+    | DEF TOKEN_NOMBRE_FUNCION SALTO_DE_LINEA cuerpoF SALTO_DE_LINEA END
+    '''
+    print("funcion sin parametro ")
 
 def p_parametro(p):
     '''parametro : variable
