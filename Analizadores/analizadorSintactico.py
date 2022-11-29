@@ -73,7 +73,6 @@ def p_asignacion(p):
     '''asignacion : variable IGUAL tipodato
     | variable IGUAL estructuradatos
     | variable IGUAL operacionesmate'''
-    print("dos")
     hayHash(p)
     global resultado
     resultado += f'Se ha hecho una asignacion\n'
@@ -314,7 +313,6 @@ def p_usocase(p):
 def p_estructurahash(p):
     '''estructurahash : LLAVE_IZQ elementohash LLAVE_DER
     | LLAVE_IZQ LLAVE_DER'''
-    print("uno")
     global esHash
     esHash = True
     global resultado
@@ -326,6 +324,8 @@ def p_elementohash(p):
 
 def p_parhash(p):
     'parhash : clavehash ASIGNACION_HASH valorhash'
+    agregarClaveHash(p[1])
+    agregarValorHash(p[3])
 
 def p_clavehash(p):
     '''clavehash : STRING
@@ -380,7 +380,7 @@ def p_error(p):
     if p:
         resultado += f'Error de sintaxis, tipo {str(p.type)} con valor: {str(p.value)}\n'
     else:
-        resultado += '\nFin de lectura!\n'
+        resultado += 'Fin de lectura!\n'
 
 # Build the parser
 parser = yacc.yacc()
@@ -422,22 +422,54 @@ file.close()'''
 def Limpiar():
     global resultado
     resultado = ""
+    limpiarControlHash()
 
-#-------------------------Reglas sematicas (Jose Alcivar)-------------------------
+#-------------------------------Reglas sematicas (Jose Alcivar)-------------------------------
 #-----reconocer la creacion de un arreglo
 def hayHash(dato):
+    global esHash
+    if (esHash==True):
+        global variableActualHash
+        global clavesHash
+        global valoresHash
+        global valoresActualesHash
+        global clavesActualesHash
+        variableActualHash = dato
+        clavesHash[variableActualHash] = clavesActualesHash
+        valoresHash[variableActualHash] = valoresActualesHash
+        valoresActualesHash = []
+        clavesActualesHash = []
+        #variableActualHash = ""
+        print("Hay " +str(len(clavesHash)) + "variables, con " + str(len(clavesHash[variableActualHash])) + "claves")
+        esHash = False
+
+def limpiarControlHash():
     global esHash
     global variableActualHash
     global clavesHash
     global valoresHash
     global valoresActualesHash
     global clavesActualesHash
-    if (esHash==True):
-        print("tres")
-        variableActualHash = dato[1]
-        clavesHash[variableActualHash] = valoresActualesHash
-        valoresHash[variableActualHash] = valoresActualesHash
-        esHash = False
+
+    valoresActualesHash = []
+    clavesActualesHash = []
+    variableActualHash = ""
+    clavesHash = {}
+    valoresHash = {}
+    esHash = False
+
+#controlar las claves de los hash
+def agregarClaveHash(clave):
+    global clavesActualesHash
+    clavesActualesHash.append(clave)
+
+#controlar los valores de los hash
+def agregarValorHash(valor):
+    global valoresActualesHash
+    valoresActualesHash.append(valor)
+
+#-------------------------------Fin Reglas sematicas (Jose Alcivar)-------------------------------
+
 
 def obtenerSintactico(info):
     ruta = "../ArchivosPrueba/"
@@ -445,9 +477,8 @@ def obtenerSintactico(info):
     fechahora = str(datetime.now())
     archivolog.write("\n" + fechahora + " " + "GUI.py")
     archivolog.close()
-
     global resultado
-    resultado = ""
+    Limpiar()
     resultado += ""
     lineas = info.split("\n")
     for line in lineas:
