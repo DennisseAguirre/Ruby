@@ -33,7 +33,8 @@ def p_tiposfuncion(p):
     | funcionsinparametro
     | funcionreturn
     '''
-
+    global resultado
+    resultado += f'Se ha hecho función \n'
 
 def p_estructuradatos(p):
     '''estructuradatos : array
@@ -64,7 +65,7 @@ def p_asignacion(p):
     | variable IGUAL estructuradatos
     | variable IGUAL operacionesmate'''
     global resultado
-    resultado += f'Se ha hecho una asignacion'
+    resultado += f'Se ha hecho una asignacion\n'
 
 def p_variable(p):
     '''variable : TOKEN_VARIABLE_GLOBAL
@@ -92,12 +93,13 @@ def p_signosmate(p):
     | POTENCIA
     '''
 
-
+# regla semántica para operaciones matemáticas
 def p_operacionesmate(p):
     '''operacionesmate : valormate signosmate valormate
                        | valormate signosmate operacionesmate
     '''
-    print("operaciones matematicas")
+    global resultado
+    resultado += f'Se ha hecho una operación matemática \n'
 
 
 #__________________________ Comparaciones (Allison Recalde)_______
@@ -118,8 +120,8 @@ def p_operadores_comparacion(p):
     | MENOR_IGUAL'''
 
 
-# Definicion de funcion
-#___________________________ Funciones que reciben 0 o n parámetros (Aguirre)_____________________
+# Definicion de funciones (Dennisse Aguirre)
+
 def p_tiporeturn(p):
     '''tiporeturn : RETURN TOKEN_VARIABLE_LOCAL
         | RETURN tipodato
@@ -215,7 +217,7 @@ def p_array(p):
     global resultado
     resultado += "Se ha definido un ARRAY\n"
     #print("arreglo")
-    #p[0] = arreglo
+    p[0] = arreglo
 
 def p_elemento(p):
     '''elemento : tipodato
@@ -232,14 +234,14 @@ def p_funcion_push(p):
    array : TOKEN_VARIABLE_LOCAL PUNTO PUSH PAREN_IZQ ENTERO PAREN_DER
     '''
 
+# regla semántica para obtener elemento de un array
 def p_obtener_elemento(p):
     '''
-   array :  TOKEN_VARIABLE_LOCAL CORCHETE_IZQ ENTERO CORCHETE_DER
+   array :   CORCHETE_IZQ ENTERO CORCHETE_DER
     '''
-    # Regla semantica para obtener elemento de un array - (Dennisse Aguirre)
-    #arreglo[p[2]]
-    #p[0] = p[1]
-    print("obtener elemento")
+    resultado += "Se ha obtenido elemento de un array\n"
+
+
 
  #array : TOKEN_VARIABLE_LOCAL CORCHETE_IZQ ENTERO CORCHETE_DER
 def p_funcion_first(p):
