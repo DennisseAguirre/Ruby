@@ -40,7 +40,7 @@ def p_estructuradatos(p):
     | conjunto
     | estructurahash
      '''
-    #
+    p[0] = p[1]
 
 def p_estructuracontrol(p):
     '''estructuracontrol : ifelse
@@ -49,13 +49,13 @@ def p_estructuracontrol(p):
         '''
 
 
-
 def p_tipodato(p):
     '''tipodato : ENTERO
     | STRING
     | FLOAT
     | BOOLEAN
     '''
+    p[0] = p[1]
 
 # ___________________________Asignación de variables- (Alcivar) _______________________
 
@@ -64,7 +64,7 @@ def p_asignacion(p):
     | variable IGUAL estructuradatos
     | variable IGUAL operacionesmate'''
     global resultado
-    resultado += f'\n Se ha hecho una asignacion, con variable igual a {p[1].value} y valor {p[3].value}'
+    resultado += f'Se ha hecho una asignacion, con variable igual a {p[1]} y valor {p[3]}\n'
 
 def p_variable(p):
     '''variable : TOKEN_VARIABLE_GLOBAL
@@ -72,6 +72,7 @@ def p_variable(p):
     | TOKEN_VARIABLE_LOCAL
     | TOKEN_CONSTANTE
     | TOKEN_VARIABLE_DE_CLASE'''
+    p[0] = p[1]
 
 
 #___________________________ Operaciones matemáticas (Dennisse Aguirre)_______________________________
@@ -96,31 +97,36 @@ def p_signosmate(p):
     '''
 
 def p_expresionesmate(p):
-    '''expresionesmate : valornum MAS valornum
+    '''expresionesmate : suma
     | valornum MENOS valornum
     | valornum MULTIPLICACION valornum
     | valornum DIVISION valornum
     | valornum MODULO valornum
     | valornum POTENCIA valornum
     '''
+    p[0] = p[1]
     # Regla semantica con operaciones aritmeticas - (Dennisse Aguirre)
-    #if p[2] == '+':
-    # p[0] = p[1] + p[3]
-    #elif p[2] == '-':
-    #  p[0] = p[1] - p[3]
-    #elif p[2] == '*':
-    # p[0] = p[1] * p[3]
-    #elif p[2] == '/':
-    #  p[0] = p[1] / p[3]
-    #elif p[2] == '%':
-    #  p[0] = p[1] % p[3]
-    #elif p[2] == '**':
-    #  p[0] = p[1] + p[2] + p[3]
+    '''if p[2] == '+':
+        p[0] = p[1] + p[3]
+    elif p[2] == '-':
+        p[0] = p[1] - p[3]
+    elif p[2] == '*':
+        p[0] = p[1] * p[3]
+    elif p[2] == '/':
+      p[0] = p[1] / p[3]
+    elif p[2] == '%':
+      p[0] = p[1] % p[3]
+    elif p[2] == '**':
+      p[0] = p[1] + p[2] + p[3]'''
 
+def p_suma(p):
+    'suma : valornum MAS valornum'
+    p[0] = p[1] + p[3]
 def p_operacionesmate(p):
     '''operacionesmate : expresionesmate
                        | expresionesmate signosmate operacionesmate
     '''
+
     print("operaciones matematicas")
 
 #__________________________ Comparaciones (Allison Recalde)_______
@@ -235,6 +241,8 @@ def p_multicond(p):
 #Array____________ (Dennisse Aguirre)__________________________________
 def p_array(p):
     "array : CORCHETE_IZQ elemento CORCHETE_DER"
+    global resultado
+    resultado += "Se ha definido un ARRAY\n"
     #print("arreglo")
     #p[0] = arreglo
 
@@ -381,10 +389,11 @@ def p_impresion(p):
 
 def p_error(p):
     global resultado
+    resultado += "Error de sintaxis"
     if p:
-        resultado += f'Error de sintaxis, tipo {str(p.type)} con valor: {str(p.value)}\n'
+        resultado += f', tipo {str(p.type)} con valor: {str(p.value)}\n'
     else:
-        resultado += 'Fin de lectura!\n'
+        resultado += '\nFin de lectura!'
 
 # Build the parser
 parser = yacc.yacc()
@@ -444,6 +453,7 @@ def obtenerSintactico(info):
             print(result)
             print("dos")
             break
+        break
     print(len(resultado))
     print(str(resultado))
     print("tres")

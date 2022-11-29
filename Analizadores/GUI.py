@@ -3,8 +3,8 @@ import sys
 from PyQt5 import QtCore
 from PyQt5 import QtGui
 from analizadorLexico import getTokens
-from analizadorSintactico import obtenerSintactico, Limpiar
-
+#from analizadorSintactico import obtenerSintactico, Limpiar
+from analizadorSintactico import *
 
 
 class Window(QWidget):
@@ -91,12 +91,27 @@ class Window(QWidget):
 
     def sintactico(self):
         self.textSint.clear()
-        res = obtenerSintactico(self.editor.toPlainText()) + "cuatro"
-        print(res)
-        if len(res) > 1:
-            self.textSint.insertPlainText(res)
+        if len(self.editor.toPlainText()) == 0:
+            pass
         else:
-            self.textSint.insertPlainText("Todo Semanticamente Correcto!")
+            res = obtenerSintactico(self.editor.toPlainText()) + "cuatro"
+            print(res)
+            if len(res) > 1:
+                self.textSint.insertPlainText(res)
+            else:
+                self.textSint.insertPlainText("Todo Semanticamente Correcto!")
+
+    '''def sintactico(self):
+        analizadorSintactico = yacc.yacc()
+        codigo = self.editor.toPlainText()
+        resultado = analizadorSintactico.parse(codigo)
+        if resultado is not None:
+            self.textSint.clear()
+            self.textSint.insertPlainText(str(resultado))
+        else:
+            self.textSint.clear()
+            self.textSint.insertPlainText("Not Ruby languaje")'''
+
 
 app = QApplication(sys.argv)
 window = Window()

@@ -5,7 +5,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Analizadores/GUI.py" beforeDir="false" afterPath="$PROJECT_DIR$/Analizadores/GUI.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Analizadores/analizadorSintactico.py" beforeDir="false" afterPath="$PROJECT_DIR$/Analizadores/analizadorSintactico.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ArchivosPrueba/log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ArchivosPrueba/log.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,7 +31,7 @@
     &quot;last_opened_file_path&quot;: &quot;C:/Users/Dennisse/Desktop/Ruby&quot;
   }
 }</component>
-  <component name="RunManager" selected="Python.analizadorLexico">
+  <component name="RunManager" selected="Python.GUI">
     <configuration name="GUI" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Ruby" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -117,7 +116,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="sintactico" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="interfaz" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Ruby" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -125,11 +124,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../../../../../../../Escritorio/ProyectoLengProg-main" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../../../../../../../Escritorio/carpeta/rubyCompiler-main/rubyCompiler-main" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../../../../../../../Escritorio/ProyectoLengProg-main/sintactico.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../../../../../../../Escritorio/carpeta/rubyCompiler-main/rubyCompiler-main/interfaz.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -140,11 +139,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.GUI" />
+        <item itemvalue="Python.interfaz" />
+        <item itemvalue="Python.gui" />
         <item itemvalue="Python.analizadorLexico" />
         <item itemvalue="Python.analizadorSintactico" />
-        <item itemvalue="Python.GUI" />
-        <item itemvalue="Python.gui" />
-        <item itemvalue="Python.sintactico" />
       </list>
     </recent_temporary>
   </component>
