@@ -4,7 +4,7 @@ from datetime import datetime
 # Crear las siguientes reglas
 
 resultado = ""
-arreglo=[]
+arreglo = []
 def p_bloque(p):
     '''bloque : cuerpo SALTO_DE_LINEA cuerpo
                  | cuerpo SALTO_DE_LINEA bloque
@@ -64,7 +64,7 @@ def p_asignacion(p):
     | variable IGUAL estructuradatos
     | variable IGUAL operacionesmate'''
     global resultado
-    resultado += f'\n Se ha hecho una asignacion, con variable igual a {p[1]} y valor {p[3]}'
+    resultado += f'\n Se ha hecho una asignacion, con variable igual a {p[1].value} y valor {p[3].value}'
 
 def p_variable(p):
     '''variable : TOKEN_VARIABLE_GLOBAL
@@ -322,7 +322,8 @@ def p_usocase(p):
 def p_estructurahash(p):
     '''estructurahash : LLAVE_IZQ elementohash LLAVE_DER
     | LLAVE_IZQ LLAVE_DER'''
-    print("estructura hash")
+    global resultado
+    resultado += "Se ha definido un HASH\n"
 
 def p_elementohash(p):
     '''elementohash : parhash
@@ -381,9 +382,9 @@ def p_impresion(p):
 def p_error(p):
     global resultado
     if p:
-        resultado += f'\n Error de sintaxis, tipo {str(p.type)} con valor: {str(p.value)}'
+        resultado += f'Error de sintaxis, tipo {str(p.type)} con valor: {str(p.value)}\n'
     else:
-        resultado += '\n Error Sintactico!'
+        resultado += 'Fin de lectura!\n'
 
 # Build the parser
 parser = yacc.yacc()
@@ -393,7 +394,7 @@ parser = yacc.yacc()
     print(result)'''
 
 
-ruta = "../ArchivosPrueba/"
+'''ruta = "../ArchivosPrueba/"
 archivos = ["Aguirreprueba.txt", "Recaldeprueba.txt", "AlcivarPrueba.txt"]
 
 a = ruta + archivos[0] ##reemplazar el indice del archivo
@@ -404,7 +405,7 @@ file.close()
 archivolog=open(ruta + "log.txt","a")
 fechahora=str(datetime.now())
 archivolog.write("\n"+fechahora+" "+ a)
-archivolog.close()
+archivolog.close()'''
 
 
 #archivos = ["Aguirreprueba.txt", "Recaldeprueba.txt", "AlcivarPrueba.txt", "hola.txt"]
@@ -422,17 +423,28 @@ archivolog.close()
         break
     if not s: continue
     validaRegla(s)'''
-
+def Limpiar():
+    global resultado
+    resultado = ""
 def obtenerSintactico(info):
     global resultado
     resultado += ""
-    while True:
-        try:
-            s = info
-        except EOFError:
+    lineas = info.split("\n")
+
+    for line in lineas:
+        while True:
+            try:
+                s = line
+                print(s)
+                print("uno")
+            except EOFError:
+                break
+            if not s: continue
+            result = parser.parse(s)
+            print(result)
+            print("dos")
             break
-        if not s: continue
-        result = parser.parse(s)
-        break
-    print(resultado)
+    print(len(resultado))
+    print(str(resultado))
+    print("tres")
     return resultado

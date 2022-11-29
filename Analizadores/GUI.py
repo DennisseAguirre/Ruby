@@ -3,7 +3,8 @@ import sys
 from PyQt5 import QtCore
 from PyQt5 import QtGui
 from analizadorLexico import getTokens
-from analizadorSintactico import obtenerSintactico
+from analizadorSintactico import obtenerSintactico, Limpiar
+
 
 
 class Window(QWidget):
@@ -82,6 +83,7 @@ class Window(QWidget):
         self.editor.clear()
         self.textLex.clear()
         self.textSint.clear()
+        Limpiar()
 
     def lexico(self):
         self.textLex.clear()
@@ -89,12 +91,12 @@ class Window(QWidget):
 
     def sintactico(self):
         self.textSint.clear()
-        res = obtenerSintactico(self.editor.toPlainText())
-        if len(res) > 0:
+        res = obtenerSintactico(self.editor.toPlainText()) + "cuatro"
+        print(res)
+        if len(res) > 1:
             self.textSint.insertPlainText(res)
         else:
             self.textSint.insertPlainText("Todo Semanticamente Correcto!")
-        pass
 
 app = QApplication(sys.argv)
 window = Window()
