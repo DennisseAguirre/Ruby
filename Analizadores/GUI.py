@@ -3,8 +3,8 @@ import sys
 from PyQt5 import QtCore
 from PyQt5 import QtGui
 from analizadorLexico import getTokens
-#from analizadorSintactico import obtenerSintactico, Limpiar
-from analizadorSintactico import *
+from analizadorSintactico import obtenerSintactico, Limpiar
+
 
 
 class Window(QWidget):

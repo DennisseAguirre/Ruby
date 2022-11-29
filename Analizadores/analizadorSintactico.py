@@ -64,7 +64,7 @@ def p_asignacion(p):
     | variable IGUAL estructuradatos
     | variable IGUAL operacionesmate'''
     global resultado
-    resultado += f'Se ha hecho una asignacion, con variable igual a {p[1]} y valor {p[3]}\n'
+    resultado += f'Se ha hecho una asignacion'
 
 def p_variable(p):
     '''variable : TOKEN_VARIABLE_GLOBAL
@@ -306,7 +306,8 @@ def p_funcion_intersect(p):
 #------estructura case (Jose Alcivar)------
 def p_estructuracase(p):
     'estructuracase : CASE variable usocase'
-    print("estructuracase")
+    global resultado
+    resultado += f'Se ha creado una estructura case'
 
 def p_opcioncase(p):
     '''opcioncase : ENTERO
@@ -321,8 +322,8 @@ def p_rango(p):
 
 
 def p_usocase(p):
-    '''usocase : WHEN opcioncase
-    | WHEN opcioncase usocase
+    '''usocase : WHEN opcioncase cuerpoF
+    | WHEN opcioncase cuerpoF usocase
     '''
 
 #------------------------------ESTRUCTURA DE DATOS------------------------------
@@ -389,11 +390,11 @@ def p_impresion(p):
 
 def p_error(p):
     global resultado
-    resultado += "Error de sintaxis"
+
     if p:
-        resultado += f', tipo {str(p.type)} con valor: {str(p.value)}\n'
+        resultado += f'Error de sintaxis, tipo {str(p.type)} con valor: {str(p.value)}\n'
     else:
-        resultado += '\nFin de lectura!'
+        resultado += '\nFin de lectura!\n'
 
 # Build the parser
 parser = yacc.yacc()
@@ -439,22 +440,14 @@ def obtenerSintactico(info):
     global resultado
     resultado += ""
     lineas = info.split("\n")
-
     for line in lineas:
         while True:
             try:
                 s = line
-                print(s)
-                print("uno")
             except EOFError:
                 break
             if not s: continue
             result = parser.parse(s)
-            print(result)
-            print("dos")
             break
         break
-    print(len(resultado))
-    print(str(resultado))
-    print("tres")
     return resultado
