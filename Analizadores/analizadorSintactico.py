@@ -348,7 +348,6 @@ def p_clavehash(p):
 def p_valorhash(p):
     'valorhash : tipodato'
 
-
 #------funciones HASH (Jose Alcivar)------
 
 def p_retornarvalorhash(p):
@@ -404,18 +403,18 @@ parser = yacc.yacc()
     print(result)'''
 
 
-'''ruta = "../ArchivosPrueba/"
-archivos = ["Aguirreprueba.txt", "Recaldeprueba.txt", "AlcivarPrueba.txt"]
+#ruta = "../ArchivosPrueba/"
+#archivos = ["Aguirreprueba.txt", "Recaldeprueba.txt", "AlcivarPrueba.txt"]
 
-a = ruta + archivos[0] ##reemplazar el indice del archivo
-file = open(a)
+#a = ruta + archivos[0] ##reemplazar el indice del archivo
+'''file = open(a)
 archivo = file.readlines()
-file.close()
+file.close()'''
 
-archivolog=open(ruta + "log.txt","a")
-fechahora=str(datetime.now())
-archivolog.write("\n"+fechahora+" "+ a)
-archivolog.close()'''
+#archivolog=open(ruta + "log.txt", "a")
+#fechahora=str(datetime.now())
+#archivolog.write("\n"+fechahora+" "+ "GUI.py")
+#archivolog.close()
 
 
 #archivos = ["Aguirreprueba.txt", "Recaldeprueba.txt", "AlcivarPrueba.txt", "hola.txt"]
@@ -437,6 +436,12 @@ def Limpiar():
     global resultado
     resultado = ""
 def obtenerSintactico(info):
+    ruta = "../ArchivosPrueba/"
+    archivolog = open(ruta + "log.txt", "a")
+    fechahora = str(datetime.now())
+    archivolog.write("\n" + fechahora + " " + "GUI.py")
+    archivolog.close()
+
     global resultado
     resultado += ""
     lineas = info.split("\n")
