@@ -5,6 +5,15 @@ from datetime import datetime
 
 resultado = ""
 arreglo = []
+
+#----------------Para el semantico del Hash (Jose Alcivar)---------------------
+esHash = False
+variableActualHash = ""
+clavesActualesHash = []
+valoresActualesHash = []
+clavesHash = {}
+valoresHash = {}
+
 def p_bloque(p):
     '''bloque : cuerpo SALTO_DE_LINEA cuerpo
                  | cuerpo SALTO_DE_LINEA bloque
@@ -64,6 +73,8 @@ def p_asignacion(p):
     '''asignacion : variable IGUAL tipodato
     | variable IGUAL estructuradatos
     | variable IGUAL operacionesmate'''
+    print("dos")
+    hayHash(p)
     global resultado
     resultado += f'Se ha hecho una asignacion\n'
 
@@ -216,7 +227,6 @@ def p_array(p):
     "array : CORCHETE_IZQ elemento CORCHETE_DER"
     global resultado
     resultado += "Se ha definido un ARRAY\n"
-    #print("arreglo")
     p[0] = arreglo
 
 def p_elemento(p):
@@ -304,6 +314,9 @@ def p_usocase(p):
 def p_estructurahash(p):
     '''estructurahash : LLAVE_IZQ elementohash LLAVE_DER
     | LLAVE_IZQ LLAVE_DER'''
+    print("uno")
+    global esHash
+    esHash = True
     global resultado
     resultado += "Se ha definido un HASH\n"
 
@@ -409,7 +422,22 @@ def Limpiar():
     global resultado
     resultado = ""
 
-    
+#-------------------------Reglas sematicas (Jose Alcivar)-------------------------
+#-----reconocer la creacion de un arreglo
+def hayHash(dato):
+    global esHash
+    global variableActualHash
+    global clavesHash
+    global valoresHash
+    global valoresActualesHash
+    global clavesActualesHash
+    if (esHash==True):
+        print("tres")
+        variableActualHash = dato[1]
+        clavesHash[variableActualHash] = valoresActualesHash
+        valoresHash[variableActualHash] = valoresActualesHash
+        esHash = False
+
 def obtenerSintactico(info):
     ruta = "../ArchivosPrueba/"
     archivolog = open(ruta + "log.txt", "a")
@@ -418,6 +446,7 @@ def obtenerSintactico(info):
     archivolog.close()
 
     global resultado
+    resultado = ""
     resultado += ""
     lineas = info.split("\n")
     for line in lineas:
