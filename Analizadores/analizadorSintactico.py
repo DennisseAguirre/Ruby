@@ -76,15 +76,11 @@ def p_variable(p):
 
 
 #___________________________ Operaciones matemáticas (Dennisse Aguirre)_______________________________
+
 def p_valormate(p):
     '''valormate : tipodato
     | variable
     '''
-def p_valornum(p):
-    '''valornum : ENTERO
-    | FLOAT
-    '''
-    #p[0] = p[1] = p[3]
 
 
 def p_signosmate(p):
@@ -96,38 +92,13 @@ def p_signosmate(p):
     | POTENCIA
     '''
 
-def p_expresionesmate(p):
-    '''expresionesmate : suma
-    | valornum MENOS valornum
-    | valornum MULTIPLICACION valornum
-    | valornum DIVISION valornum
-    | valornum MODULO valornum
-    | valornum POTENCIA valornum
-    '''
-    p[0] = p[1]
-    # Regla semantica con operaciones aritmeticas - (Dennisse Aguirre)
-    '''if p[2] == '+':
-        p[0] = p[1] + p[3]
-    elif p[2] == '-':
-        p[0] = p[1] - p[3]
-    elif p[2] == '*':
-        p[0] = p[1] * p[3]
-    elif p[2] == '/':
-      p[0] = p[1] / p[3]
-    elif p[2] == '%':
-      p[0] = p[1] % p[3]
-    elif p[2] == '**':
-      p[0] = p[1] + p[2] + p[3]'''
 
-def p_suma(p):
-    'suma : valornum MAS valornum'
-    p[0] = p[1] + p[3]
 def p_operacionesmate(p):
-    '''operacionesmate : expresionesmate
-                       | expresionesmate signosmate operacionesmate
+    '''operacionesmate : valormate signosmate valormate
+                       | valormate signosmate operacionesmate
     '''
-
     print("operaciones matematicas")
+
 
 #__________________________ Comparaciones (Allison Recalde)_______
 def p_comparaciones(p):

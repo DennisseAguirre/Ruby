@@ -120,3 +120,4 @@ fecha-hora  NombreArchivo
 2022-11-28 20:52:25.550167 ../ArchivosPrueba/Aguirreprueba.txt
 2022-11-28 20:53:22.825814 ../ArchivosPrueba/Aguirreprueba.txt
 2022-11-28 20:55:45.530583 ../ArchivosPrueba/Aguirreprueba.txt
+2022-11-29 01:24:35.424742 GUI.py
