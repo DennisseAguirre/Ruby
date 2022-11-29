@@ -175,13 +175,27 @@ def p_condicion(p):
     '''
 
 
+def p_mas_cuerpoF(p):
+    '''
+        mas_cuerpoF : cuerpoF
+                     | cuerpoF mas_cuerpoF
+    '''
+
+
 def p_sentencias_while(p):
     '''
-    sentencias_while : WHILE condicion DO
-               | WHILE condicion
-               | WHILE PAREN_IZQ condicion PAREN_DER DO
-               | WHILE PAREN_IZQ condicion PAREN_DER
+    sentencias_while : WHILE condicion DO mas_cuerpoF END
+               | WHILE condicion mas_cuerpoF END
+               | WHILE PAREN_IZQ condicion PAREN_DER DO mas_cuerpoF END
+               | WHILE PAREN_IZQ condicion PAREN_DER mas_cuerpoF END
     '''
+    '''
+
+    global resultado
+    resultado += "Estructura while\n"
+    '''
+    print("Estructura while")
+
 
 #IF ELSE ____ _____(Dennisse Aguirre)_________________________________________
 def p_ifelse(p):
