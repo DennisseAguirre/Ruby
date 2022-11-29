@@ -94,8 +94,7 @@ class Window(QWidget):
         if len(self.editor.toPlainText()) == 0:
             pass
         else:
-            res = obtenerSintactico(self.editor.toPlainText()) + "cuatro"
-            print(res)
+            res = obtenerSintactico(self.editor.toPlainText())
             if len(res) > 1:
                 self.textSint.insertPlainText(res)
             else:

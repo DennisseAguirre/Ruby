@@ -406,6 +406,8 @@ file.close()'''
 def Limpiar():
     global resultado
     resultado = ""
+
+    
 def obtenerSintactico(info):
     ruta = "../ArchivosPrueba/"
     archivolog = open(ruta + "log.txt", "a")
@@ -417,6 +419,7 @@ def obtenerSintactico(info):
     resultado += ""
     lineas = info.split("\n")
     for line in lineas:
+        print(line)
         while True:
             try:
                 s = line
@@ -425,5 +428,4 @@ def obtenerSintactico(info):
             if not s: continue
             result = parser.parse(s)
             break
-        break
     return resultado
