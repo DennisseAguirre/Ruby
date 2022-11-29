@@ -371,7 +371,8 @@ def p_impresion(p):
                   | PRINT PAREN_IZQ tipodato PAREN_DER
                   | PUTS PAREN_IZQ tipodato PAREN_DER
     '''
-    print("impresion")
+    global resultado
+    resultado += "Se ha realizado una impresion\n"
 
 def p_error(p):
     global resultado
