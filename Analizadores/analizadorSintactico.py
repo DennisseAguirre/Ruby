@@ -163,8 +163,7 @@ def p_sentencias_while(p):
 
 def p_ifelse(p):
     '''
-            ifelse :
-             | IF multicond mas_cuerpoF ELSE mas_cuerpoF END
+            ifelse :  IF multicond mas_cuerpoF ELSE mas_cuerpoF END
              | IF cond mas_cuerpoF ELSE mas_cuerpoF END
             | IF PAREN_IZQ cond PAREN_DER mas_cuerpoF ELSE mas_cuerpoF END
             | IF PAREN_IZQ multicond PAREN_DER mas_cuerpoF ELSE mas_cuerpoF END
