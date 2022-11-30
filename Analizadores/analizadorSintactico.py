@@ -15,11 +15,6 @@ valoresActualesHash = []
 clavesHash = {}
 valoresHash = {}
 
-def p_bloque(p):
-    '''bloque : cuerpo SALTO_DE_LINEA cuerpo
-                 | cuerpo SALTO_DE_LINEA bloque
-                 '''
-
 # 6. Cuerpo
 def p_cuerpo(p):
     '''cuerpo : cuerpoF
@@ -38,13 +33,6 @@ def p_cuerpoF(p):
     | impresion
     '''
 
-def p_tiposfuncion(p):
-    '''tiposfuncion : funcionparametro
-    | funcionsinparametro
-    | funcionreturn
-    '''
-    global resultado
-    resultado += f'Se ha hecho función \n'
 
 def p_estructuradatos(p):
     '''estructuradatos : array
@@ -97,7 +85,10 @@ def p_valormate(p):
     | variable
     '''
 
-
+def p_valornum(p):
+    '''valornum : ENTERO
+    | FLOAT
+    '''
 def p_signosmate(p):
     '''signosmate : MAS
     | MENOS
@@ -110,8 +101,8 @@ def p_signosmate(p):
 
 # regla semántica para operaciones matemáticas
 def p_operacionesmate(p):
-    '''operacionesmate : valormate signosmate valormate
-                       | valormate signosmate operacionesmate
+    '''operacionesmate : valornum  signosmate valornum
+                       | valornum  signosmate operacionesmate
     '''
     global resultado
     resultado += f'Se ha hecho una operación matemática \n'
@@ -136,49 +127,6 @@ def p_operadores_comparacion(p):
     | MAYOR_IGUAL
     | MENOR_IGUAL'''
 
-#_________________________ Estructura de control______________
-#BUCLE WHILE____ (Allison Recalde)
-# Definicion de funciones (Dennisse Aguirre)
-
-def p_tiporeturn(p):
-    '''tiporeturn : RETURN TOKEN_VARIABLE_LOCAL
-        | RETURN tipodato
-        '''
-
-
-def p_funcionreturn(p):
-    '''funcionreturn : DEF TOKEN_NOMBRE_FUNCION PAREN_IZQ parametro PAREN_DER cuerpoF tiporeturn END
-            | DEF TOKEN_NOMBRE_FUNCION cuerpoF tiporeturn END
-            | DEF TOKEN_NOMBRE_FUNCION PAREN_IZQ parametro PAREN_DER SALTO_DE_LINEA cuerpoF SALTO_DE_LINEA tiporeturn SALTO_DE_LINEA END
-            | DEF TOKEN_NOMBRE_FUNCION SALTO_DE_LINEA cuerpoF SALTO_DE_LINEA  tiporeturn SALTO_DE_LINEA END
-            '''
-    print("funcion con retorno")
-
-
-def p_funcionparametro(p):
-    '''funcionparametro : DEF TOKEN_NOMBRE_FUNCION PAREN_IZQ parametro PAREN_DER cuerpoF END
-     | DEF TOKEN_NOMBRE_FUNCION PAREN_IZQ parametro PAREN_DER SALTO_DE_LINEA cuerpoF SALTO_DE_LINEA END
-    '''
-    print("funcion con parametro")
-
-
-def p_funcionsinparametro(p):
-    '''funcionsinparametro : DEF TOKEN_NOMBRE_FUNCION cuerpoF END
-    | DEF TOKEN_NOMBRE_FUNCION SALTO_DE_LINEA cuerpoF SALTO_DE_LINEA END
-    '''
-    print("funcion sin parametro ")
-
-
-def p_parametro(p):
-    '''parametro : tipopar
-    | tipopar COMA parametro
-    '''
-
-
-def p_tipopar(p):
-    '''tipopar : tipodato
-    | variable
-    '''
 
 
 # _________________________ Estructura de control______________
@@ -211,7 +159,6 @@ def p_sentencias_while(p):
     print("Estructura while")
 
 
-#IF ELSE ____ _____(Dennisse Aguirre)_________________________________________
 
 # IF ELSE ____ _____(Dennisse Aguirre)_________________________________________
 
@@ -282,8 +229,6 @@ def p_tipopar(p):
 #__________________________ Estructura de datos  ______________________________________________
 #Array____________ (Dennisse Aguirre)__________________________________
 
-# __________________________ Estructura de datos  ______________________________________________
-# Array____________ (Dennisse Aguirre)__________________________________
 
 def p_array(p):
     "array : CORCHETE_IZQ elemento CORCHETE_DER"
