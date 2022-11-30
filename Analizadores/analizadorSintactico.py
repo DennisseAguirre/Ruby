@@ -33,8 +33,6 @@ def p_cuerpoF(p):
     '''
 
 
-
-
 def p_estructuradatos(p):
     '''estructuradatos : array
     | conjunto
@@ -186,7 +184,7 @@ def p_multicond(p):
              | cond operadoreslogicos multicond
              '''
 
-# Definicion de funciones (Dennisse Aguirre)---------------------
+# Definicion de funciones (Dennisse Aguirre)-----------------------------
 
 def p_tiporeturn(p):
     '''tiporeturn : RETURN TOKEN_VARIABLE_LOCAL
@@ -199,10 +197,10 @@ def p_definicionfunciones(p):
             | DEF TOKEN_NOMBRE_FUNCION PAREN_IZQ parametro PAREN_DER mas_cuerpoF END
              | DEF TOKEN_NOMBRE_FUNCION mas_cuerpoF END
             '''
-
-
     global resultado
     resultado += f'Se ha hecho una función \n'
+
+
 def p_parametro(p):
     '''parametro : tipopar
     | tipopar COMA parametro
