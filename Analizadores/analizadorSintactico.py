@@ -347,7 +347,6 @@ def p_elementohash(p):
 
 def p_parhash(p):
     'parhash : clavehash ASIGNACION_HASH valorhash'
-    print(str(p[1]) + " y " + str(p[3]))
     agregarClaveHash(p[1])
     agregarValorHash(p[3])
 
@@ -369,7 +368,6 @@ def p_retornarvalorhash(p):
     'estructurahash : TOKEN_VARIABLE_LOCAL CORCHETE_IZQ clavehash CORCHETE_DER'
     print("retornar valor de clave")
 
-
 def p_agregarclavehash(p):
     'estructurahash : TOKEN_VARIABLE_LOCAL CORCHETE_IZQ clavehash CORCHETE_DER IGUAL valorhash'
     print("agregar clave valor al hash")
@@ -378,11 +376,6 @@ def p_agregarclavehash(p):
 def p_borrarclavehash(p):
     'estructurahash : TOKEN_VARIABLE_LOCAL PUNTO DELETE PAREN_IZQ clavehash PAREN_DER'
     print("borrar clave del hash")
-
-
-def p_valoresdelhash(p):
-    'estructurahash : TOKEN_VARIABLE_LOCAL PUNTO VALUES'
-    print("extraer valores del hash")
 
 
 # ------------------------------PEDIR DATOS TECLADO------------------------------
@@ -433,14 +426,6 @@ def hayHash(dato):
         esHash = False
 
 
-def auxiliar():
-    print("Hay (" + str(len(clavesHash)) + ", " + str(len(valoresHash)) + ") variables")
-
-    claves = clavesHash.keys()
-    for cla in claves:
-        print(cla)
-
-
 def limpiarControlHash():
     global esHash
     global variableActualHash
@@ -474,20 +459,32 @@ def p_retornarclavesdelhash(p):
     'estructurahash : TOKEN_VARIABLE_LOCAL PUNTO KEYS'
     probar = p[1]
     cadena = ""
+    global resultado
+
     if ( probar in clavesHash ):
+        resultado += f'funcion keys\n'
         arreglo = clavesHash[probar]
-        for valor in arreglo:
-            cadena += valor + " "
+        for clave in arreglo:
+            cadena += str(clave) + " "
     else:
         cadena = ("Error semantico, la variable " + p[1] + " no existe o no es un diccionario\n")
 
-    global resultado
     resultado += f"{cadena}\n"
-# -----obtener los valores de un hash (regla semantica)-----
-def p_valoresdelhash(p):
-    'estructurahash : TOKEN_VARIABLE_LOCAL PUNTO VALUES'
-    print("extraer valores del hash")
 
+# -----obtener los valores de un hash (regla semantica)-----
+def p_retornarvaloresdelhash(p):
+    'estructurahash : TOKEN_VARIABLE_LOCAL PUNTO VALUES'
+    var = p[1]
+    concatenar = ""
+    global resultado
+    if ( var in valoresHash ):
+        concatenar += f'funcion values\n'
+        array = valoresHash[var]
+        for valor in array:
+            concatenar += str(valor) + " "
+    else:
+        concatenar = ("Error semantico, la variable " + p[1] + " no existe o no es un diccionario\n")
+    resultado += f"{concatenar}\n"
 
 # -------------------------------Fin Reglas sematicas (Jose Alcivar)-------------------------------
 
@@ -553,5 +550,4 @@ def obtenerSintactico(info):
             if not s: continue
             result = parser.parse(s)
             break
-    auxiliar()
     return resultado
