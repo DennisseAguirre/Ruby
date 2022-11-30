@@ -5,7 +5,6 @@ from datetime import datetime
 # Crear las siguientes reglas
 
 resultado = ""
-arreglo = []
 
 # ----------------Para el semantico del Hash (Jose Alcivar)---------------------
 esHash = False
@@ -43,8 +42,8 @@ def p_estructuradatos(p):
 
 
 def p_estructuracontrol(p):
-    '''estructuracontrol : ifelse
-       | sentencias_while
+    '''estructuracontrol :  sentencias_while
+       | ifelse
        | estructuracase
         '''
 
@@ -99,7 +98,7 @@ def p_signosmate(p):
     '''
 
 
-# regla semántica para operaciones matemáticas
+#  regla semántica para operaciones matemáticas que solo deben ser números - Dennisse
 def p_operacionesmate(p):
     '''operacionesmate : valornum  signosmate valornum
                        | valornum  signosmate operacionesmate
@@ -171,7 +170,7 @@ def p_ifelse(p):
             | IF PAREN_IZQ multicond PAREN_DER mas_cuerpoF ELSE mas_cuerpoF END
              '''
     global resultado
-    resultado += "Estructura if-else\n"
+    resultado += f"Estructura if-else\n"
 
 
 
@@ -233,9 +232,7 @@ def p_tipopar(p):
 def p_array(p):
     "array : CORCHETE_IZQ elemento CORCHETE_DER"
     global resultado
-    resultado += "Se ha definido un ARRAY\n"
-    p[0] = arreglo
-
+    resultado += f"Se ha definido un ARRAY\n"
 
 def p_elemento(p):
     '''elemento : tipodato
@@ -248,21 +245,23 @@ def p_funcion_length(p):
     '''
     array : TOKEN_VARIABLE_LOCAL PUNTO LENGTH
     '''
-
+    global resultado
+    resultado += f"Uso de length para array\n"
 
 def p_funcion_push(p):
     '''
    array : TOKEN_VARIABLE_LOCAL PUNTO PUSH PAREN_IZQ ENTERO PAREN_DER
     '''
+    global resultado
+    resultado += f"Uso de push para array\n"
 
-
-# regla semántica para obtener elemento de un array
+# regla semántica acerca del indice  que debe ser entero - Dennisse
 def p_obtener_elemento(p):
     '''
-   array :   CORCHETE_IZQ ENTERO CORCHETE_DER
+   array : TOKEN_VARIABLE_LOCAL  CORCHETE_IZQ ENTERO CORCHETE_DER
     '''
     global resultado
-    resultado += "Se ha obtenido elemento de un array\n"
+    resultado += f"obtener elemento de un array\n"
 
 
 # array : TOKEN_VARIABLE_LOCAL CORCHETE_IZQ ENTERO CORCHETE_DER
@@ -270,6 +269,8 @@ def p_funcion_first(p):
     '''
     array : TOKEN_VARIABLE_LOCAL PUNTO FIRST PAREN_IZQ PAREN_DER
     '''
+    global resultado
+    resultado += f"Uso de first para array\n"
 
 
 # Set ______________(Allison Recalde)_____________________________________________
