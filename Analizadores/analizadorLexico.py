@@ -239,5 +239,5 @@ def getTokens(info):
         token = lexer.token()
         if not token:
             break
-        resultado += '\n' + str(token)
+        resultado += str(token) + "\n"
     return resultado
