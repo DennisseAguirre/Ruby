@@ -14,15 +14,10 @@ valoresActualesHash = []
 clavesHash = {}
 valoresHash = {}
 
-def p_bloque(p):
-    '''bloque : cuerpo SALTO_DE_LINEA cuerpo
-                 | cuerpo SALTO_DE_LINEA bloque
-                 '''
-
 # 6. Cuerpo
 def p_cuerpo(p):
     '''cuerpo : cuerpoF
-    | tiposfuncion
+    | definicionfunciones
     | estructuradatos
     | pedirporteclado
     | estructuracontrol
@@ -37,13 +32,8 @@ def p_cuerpoF(p):
     | impresion
     '''
 
-def p_tiposfuncion(p):
-    '''tiposfuncion : funcionparametro
-    | funcionsinparametro
-    | funcionreturn
-    '''
-    global resultado
-    resultado += f'Se ha hecho función \n'
+
+
 
 def p_estructuradatos(p):
     '''estructuradatos : array
@@ -130,42 +120,7 @@ def p_operadores_comparacion(p):
     | MENOR_IGUAL'''
 
 
-# Definicion de funciones (Dennisse Aguirre)
 
-def p_tiporeturn(p):
-    '''tiporeturn : RETURN TOKEN_VARIABLE_LOCAL
-        | RETURN tipodato
-        '''
-
-def p_funcionreturn(p):
-    '''funcionreturn : DEF TOKEN_NOMBRE_FUNCION PAREN_IZQ parametro PAREN_DER cuerpoF tiporeturn END
-            | DEF TOKEN_NOMBRE_FUNCION cuerpoF tiporeturn END
-            | DEF TOKEN_NOMBRE_FUNCION PAREN_IZQ parametro PAREN_DER SALTO_DE_LINEA cuerpoF SALTO_DE_LINEA tiporeturn SALTO_DE_LINEA END
-            | DEF TOKEN_NOMBRE_FUNCION SALTO_DE_LINEA cuerpoF SALTO_DE_LINEA  tiporeturn SALTO_DE_LINEA END
-            '''
-    print("funcion con retorno")
-
-def p_funcionparametro(p):
-    '''funcionparametro : DEF TOKEN_NOMBRE_FUNCION PAREN_IZQ parametro PAREN_DER cuerpoF END
-     | DEF TOKEN_NOMBRE_FUNCION PAREN_IZQ parametro PAREN_DER SALTO_DE_LINEA cuerpoF SALTO_DE_LINEA END
-    '''
-    print("funcion con parametro")
-
-def p_funcionsinparametro(p):
-    '''funcionsinparametro : DEF TOKEN_NOMBRE_FUNCION cuerpoF END
-    | DEF TOKEN_NOMBRE_FUNCION SALTO_DE_LINEA cuerpoF SALTO_DE_LINEA END
-    '''
-    print("funcion sin parametro ")
-
-def p_parametro(p):
-    '''parametro : tipopar
-    | tipopar COMA parametro
-    '''
-
-def p_tipopar(p):
-    '''tipopar : tipodato
-    | variable
-    '''
 #_________________________ Estructura de control______________
 #BUCLE WHILE____ (Allison Recalde)
 def p_condicion(p):
@@ -200,16 +155,15 @@ def p_sentencias_while(p):
 #IF ELSE ____ _____(Dennisse Aguirre)_________________________________________
 def p_ifelse(p):
     '''
-            ifelse : IF cond ELSE END
-             | IF multicond ELSE END
-             | IF multicond cuerpoF ELSE cuerpoF END
-             | IF cond cuerpoF ELSE cuerpoF END
-            | IF cond SALTO_DE_LINEA ELSE SALTO_DE_LINEA END
-            | IF multicond SALTO_DE_LINEA ELSE SALTO_DE_LINEA END
-            | IF multicond SALTO_DE_LINEA cuerpoF SALTO_DE_LINEA ELSE SALTO_DE_LINEA cuerpoF SALTO_DE_LINEA END
-            | IF cond SALTO_DE_LINEA cuerpoF SALTO_DE_LINEA ELSE SALTO_DE_LINEA cuerpoF SALTO_DE_LINEA END
+            ifelse :
+             | IF multicond mas_cuerpoF ELSE mas_cuerpoF END
+             | IF cond mas_cuerpoF ELSE mas_cuerpoF END
+            | IF PAREN_IZQ cond PAREN_DER mas_cuerpoF ELSE mas_cuerpoF END
+            | IF PAREN_IZQ multicond PAREN_DER mas_cuerpoF ELSE mas_cuerpoF END
              '''
-    print("if else")
+    global resultado
+    resultado += "Estructura if-else\n"
+
 
 def p_valorencondiciones(p):
     '''
@@ -232,7 +186,32 @@ def p_multicond(p):
              | cond operadoreslogicos multicond
              '''
 
+# Definicion de funciones (Dennisse Aguirre)---------------------
 
+def p_tiporeturn(p):
+    '''tiporeturn : RETURN TOKEN_VARIABLE_LOCAL
+        | RETURN tipodato
+        '''
+
+def p_definicionfunciones(p):
+    '''definicionfunciones : DEF TOKEN_NOMBRE_FUNCION PAREN_IZQ parametro PAREN_DER mas_cuerpoF tiporeturn END
+            | DEF TOKEN_NOMBRE_FUNCION mas_cuerpoF tiporeturn END
+            | DEF TOKEN_NOMBRE_FUNCION PAREN_IZQ parametro PAREN_DER mas_cuerpoF END
+             | DEF TOKEN_NOMBRE_FUNCION mas_cuerpoF END
+            '''
+
+
+    global resultado
+    resultado += f'Se ha hecho una función \n'
+def p_parametro(p):
+    '''parametro : tipopar
+    | tipopar COMA parametro
+    '''
+
+def p_tipopar(p):
+    '''tipopar : tipodato
+    | variable
+    '''
 
 #__________________________ Estructura de datos  ______________________________________________
 #Array____________ (Dennisse Aguirre)__________________________________
@@ -262,6 +241,7 @@ def p_obtener_elemento(p):
     '''
    array :   CORCHETE_IZQ ENTERO CORCHETE_DER
     '''
+    global resultado
     resultado += "Se ha obtenido elemento de un array\n"
 
 
