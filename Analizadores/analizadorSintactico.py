@@ -266,7 +266,7 @@ def p_funcion_push(p):
 # regla semántica acerca del indice  que debe ser entero - Dennisse
 def p_obtener_elemento(p):
     '''
-   array : TOKEN_VARIABLE_LOCAL  CORCHETE_IZQ ENTERO CORCHETE_DER
+   array : TOKEN_VARIABLE_LOCAL CORCHETE_IZQ ENTERO CORCHETE_DER
     '''
     global resultado
     resultado += f"obtener elemento de un array\n"
@@ -379,9 +379,9 @@ def p_valorhash(p):
 
 # ------funciones HASH (Jose Alcivar)------
 
-def p_retornarvalorhash(p):
+'''def p_retornarvalorhash(p):
     'estructurahash : TOKEN_VARIABLE_LOCAL CORCHETE_IZQ clavehash CORCHETE_DER'
-    print("retornar valor de clave")
+    print("retornar valor de clave")'''
 
 def p_agregarclavehash(p):
     'estructurahash : TOKEN_VARIABLE_LOCAL CORCHETE_IZQ clavehash CORCHETE_DER IGUAL valorhash'
@@ -415,12 +415,6 @@ def p_impresion(p):
 
 # Build the parser
 
-def p_error(p):
-    global resultado
-    if p:
-        resultado += f'Error de sintaxis, tipo {str(p.type)} con valor: {str(p.value)}\n'
-    else:
-        resultado += 'Fin de lectura!\n'
 
 
 # -------------------------------Reglas sematicas (Jose Alcivar)-------------------------------
@@ -503,6 +497,13 @@ def p_retornarvaloresdelhash(p):
     resultado += f"{concatenar}\n"
 
 # -------------------------------Fin Reglas sematicas (Jose Alcivar)-------------------------------
+
+def p_error(p):
+    global resultado
+    if p:
+        resultado += f'Error de sintaxis, tipo {str(p.type)} con valor: {str(p.value)}\n'
+    else:
+        resultado += 'Fin de lectura!\n'
 
 parser = yacc.yacc()
 
