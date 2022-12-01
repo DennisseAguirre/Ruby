@@ -18,6 +18,7 @@ valoresHash = {}
 def p_cuerpo(p):
     '''cuerpo : cuerpoF
     | definicionfunciones
+    | llamada_funciones
     | estructuradatos
     | pedirporteclado
     | estructuracontrol
@@ -30,6 +31,7 @@ def p_cuerpoF(p):
     | operacionesmate
     | comparaciones
     | impresion
+    | estructuracontrol
     '''
 
 
@@ -223,6 +225,14 @@ def p_tipopar(p):
     '''tipopar : tipodato
     | variable
     '''
+#_____________Llamada a funciones con n argumentos (Allison Recalde)______
+def p_llamada_funciones(p):
+    '''llamada_funciones : TOKEN_VARIABLE_LOCAL PAREN_IZQ parametro PAREN_DER
+        | TOKEN_VARIABLE_LOCAL PAREN_IZQ  PAREN_DER
+    '''
+    global resultado
+    resultado += f'Llamada a funciones \n'
+
 
 #__________________________ Estructura de datos  ______________________________________________
 #Array____________ (Dennisse Aguirre)__________________________________
@@ -275,7 +285,8 @@ def p_funcion_first(p):
 # Set ______________(Allison Recalde)_____________________________________________
 def p_conjunto(p):
     'conjunto : SET CORCHETE_IZQ elemento CORCHETE_DER'
-
+    global resultado
+    resultado += f"Estructura de datos: Conjunto\n"
 
 # Metodos de la estructura SET (Allison Recalde)
 def p_funcion_clear(p):
@@ -283,19 +294,24 @@ def p_funcion_clear(p):
     conjunto : TOKEN_VARIABLE_LOCAL PUNTO CLEAR PAREN_IZQ PAREN_DER
     | TOKEN_VARIABLE_LOCAL PUNTO CLEAR
     '''
+    global resultado
+    resultado += f"Función clear para Conjunto\n"
 
 
 def p_funcion_size(p):
     '''
     conjunto : TOKEN_VARIABLE_LOCAL PUNTO SIZE PAREN_IZQ PAREN_DER
     '''
+    global resultado
+    resultado += f"Función size para Conjunto\n"
 
 
 def p_funcion_add(p):
     '''
     conjunto : TOKEN_VARIABLE_LOCAL PUNTO ADD PAREN_IZQ tipodato PAREN_DER
     '''
-
+    global resultado
+    resultado += f"Función add para Conjunto\n"
 
 def p_funcion_intersect(p):
     '''
