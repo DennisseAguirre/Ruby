@@ -208,6 +208,8 @@ def p_tiporeturn(p):
     '''tiporeturn : RETURN TOKEN_VARIABLE_LOCAL
         | RETURN tipodato
         '''
+    global resultado
+    resultado += f'Se ha hecho un retorno\n'
 
 def p_definicionfunciones(p):
     '''definicionfunciones : DEF TOKEN_NOMBRE_FUNCION PAREN_IZQ parametro PAREN_DER mas_cuerpoF tiporeturn END
