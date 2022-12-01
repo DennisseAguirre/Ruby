@@ -159,7 +159,7 @@ def t_TOKEN_VARIABLE_INSTANCIA(t):
 
 
 def t_TOKEN_VARIABLE_LOCAL(t):
-    r'([a-z][a-zA-Z0-9_]*)|(_[a-z][a-zA-Z0-9_]+)'
+    r'^([a-z][a-zA-Z0-9_]*)$|^(_[a-z][a-zA-Z0-9_]+)$'
     t.type = palabrasReservadas.get(t.value, "TOKEN_VARIABLE_LOCAL")
     if (t.type == "DEF"):
         bandera.append(1)

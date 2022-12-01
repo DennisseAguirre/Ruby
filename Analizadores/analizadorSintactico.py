@@ -71,12 +71,16 @@ def p_asignacion(p):
     resultado += f'Se ha hecho una asignacion\n'
 
 
+#def p_variable(p):
+#    '''variable : TOKEN_VARIABLE_GLOBAL
+#    | TOKEN_VARIABLE_INSTANCIA
+#    | TOKEN_VARIABLE_LOCAL
+#    | TOKEN_CONSTANTE
+#    | TOKEN_VARIABLE_DE_CLASE'''
+#    p[0] = p[1]
+
 def p_variable(p):
-    '''variable : TOKEN_VARIABLE_GLOBAL
-    | TOKEN_VARIABLE_INSTANCIA
-    | TOKEN_VARIABLE_LOCAL
-    | TOKEN_CONSTANTE
-    | TOKEN_VARIABLE_DE_CLASE'''
+    'variable : TOKEN_VARIABLE_LOCAL'
     p[0] = p[1]
 
 

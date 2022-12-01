@@ -33,7 +33,7 @@ class Window(QWidget):
         self.editor = QPlainTextEdit(self)
         self.editor.setPlaceholderText("Escriba aqui...")
         self.editor.setStyleSheet("border-color:black")
-        self.editor.setMaximumWidth(600)
+        self.editor.setMaximumWidth(900)
         self.editor.setMaximumHeight(300)
 
         # Contenedor botones
