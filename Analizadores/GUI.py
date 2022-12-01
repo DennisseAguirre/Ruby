@@ -6,7 +6,6 @@ from analizadorLexico import getTokens
 from analizadorSintactico import obtenerSintactico, Limpiar
 
 
-
 class Window(QWidget):
     def __init__(self):
         super().__init__()

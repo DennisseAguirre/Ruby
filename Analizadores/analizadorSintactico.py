@@ -32,6 +32,7 @@ def p_cuerpoF(p):
     | comparaciones
     | impresion
     | estructuracontrol
+    | pedirporteclado
     '''
 
 
@@ -397,7 +398,8 @@ def p_borrarclavehash(p):
 def p_pedirporteclado(p):
     '''pedirporteclado : variable IGUAL GETS
     | variable IGUAL GETS PUNTO CHOMP'''
-    print("pedir por teclado")
+    global resultado
+    resultado += f"pedir por teclado\n"
 
 
 # ________IMPRIMIR DATOS______(Allison Recalde)
