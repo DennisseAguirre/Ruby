@@ -61,7 +61,7 @@ def p_tipodato(p):
 
 
 # ___________________________Asignación de variables- (Alcivar) _______________________
-
+#  regla semántica para asignacion de variables - Allison
 def p_asignacion(p):
     '''asignacion : variable IGUAL tipodato
     | variable IGUAL estructuradatos
@@ -115,12 +115,13 @@ def p_operacionesmate(p):
 
 
 # __________________________ Comparaciones (Allison Recalde)_______
+#  regla semántica para operaciones relacionales que solo deben ser números - Allison
 def p_comparaciones(p):
-    "comparaciones : valormate mas_comparaciones"
+    "comparaciones : valornum mas_comparaciones"
 
 
 def p_mas_comparaciones(p):
-    '''mas_comparaciones : operadores_comparacion valormate
+    '''mas_comparaciones : operadores_comparacion valornum
                                    | operadores_comparacion valormate mas_comparaciones
     '''
 
